@@ -8,6 +8,7 @@ GEM
     connection_pool (2.3.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.8.1)
     http-cookie (1.0.5)
       domain_name (~> 0.5)
     mechanize (2.8.5)
@@ -49,6 +50,7 @@ PLATFORMS
   x86_64-darwin-21
 
 DEPENDENCIES
+  dotenv
   mechanize
   pry-byebug
 
