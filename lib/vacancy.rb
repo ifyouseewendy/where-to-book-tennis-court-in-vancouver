@@ -10,23 +10,25 @@ class Vacancy
     @court_info = court_info
   end
 
-  # "Tue Nov 29, 2022 08:00 - 09:00 AM Court 1"
+  # "Tue Nov 29, 2022 08:00 AM  - 09:00 AM (1h) Court 1"
   def to_s
     [
-      start_time.strftime('%a %b %d, %Y %I:%M'),
+      date.strftime('%a %b %d, %Y'),
+      start_time.strftime('%I:%M %p'),
       '-',
       end_time.strftime('%I:%M %p'),
+      "(#{duration}h)",
       court_info
     ].join(' ')
   end
 
   def to_h
     {
-      date: @date.to_s,
-      start_time: @start_time.strftime('%I:%M %p'),
-      end_time: @end_time.strftime('%I:%M %p'),
-      duration: "#{@duration}h",
-      court_info: @court_info
+      date: date.strftime('%a %b %d, %Y'),
+      start_time: start_time.strftime('%I:%M %p'),
+      end_time: end_time.strftime('%I:%M %p'),
+      duration: "#{duration}h",
+      court_info:
     }
   end
 end

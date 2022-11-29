@@ -12,7 +12,7 @@ class Scraper
     @vacancies = Vacancies.new
   end
 
-  def run
+  def run(to_a: false)
     agent = Mechanize.new
     login_page = agent.get(BTC_LOGIN)
 
@@ -38,9 +38,7 @@ class Scraper
       cal_page = link.click
       @vacancies.concat(collect_vacancies(date, cal_page))
     end
-  end
 
-  def data(to_a: false)
     if to_a
       @vacancies.to_a
     else
