@@ -1,8 +1,9 @@
 class Vacancy
   # duration is in hours
-  attr_reader :date, :start_time, :end_time, :duration, :court_info
+  attr_reader :venue, :date, :start_time, :end_time, :duration, :court_info
 
-  def initialize(date:, start_time:, end_time:, court_info:)
+  def initialize(venue:, date:, start_time:, end_time:, court_info:)
+    @venue = venue
     @date = date
     @start_time = start_time
     @end_time = end_time
@@ -13,6 +14,7 @@ class Vacancy
   # "Tue Nov 29, 2022 08:00 AM  - 09:00 AM (1h) Court 1"
   def to_s
     [
+      "#{venue}:",
       date.strftime('%a %b %d, %Y'),
       start_time.strftime('%I:%M %p'),
       '-',
@@ -24,6 +26,7 @@ class Vacancy
 
   def to_h
     {
+      venue:,
       date: date.strftime('%a %b %d, %Y'),
       start_time: start_time.strftime('%I:%M %p'),
       end_time: end_time.strftime('%I:%M %p'),

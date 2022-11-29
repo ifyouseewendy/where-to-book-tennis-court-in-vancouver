@@ -12,7 +12,7 @@ class TestMeme < Minitest::Test
       assert_equal 12, vacancies.count
 
       vacancy = vacancies.first
-      assert_equal 'Tue Nov 29, 2022 01:00 PM - 01:30 PM (0.5h) Indoor Court 1', vacancy.to_s
+      assert_equal 'btc: Tue Nov 29, 2022 01:00 PM - 01:30 PM (0.5h) Indoor Court 1', vacancy.to_s
     end
   end
 end

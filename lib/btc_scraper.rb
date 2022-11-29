@@ -96,6 +96,7 @@ class BTCScraper
         court_info = courts[col]
 
         vacancies << Vacancy.new(
+          venue: :btc,
           date:,
           start_time:,
           end_time:,
