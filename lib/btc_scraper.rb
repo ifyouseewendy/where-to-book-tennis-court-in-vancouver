@@ -5,6 +5,7 @@ require_relative './vacancies'
 
 class BTCScraper
   def initialize
+    @venue = :btc
     @vacancies = Vacancies.new
     @website = VENUES.at(:btc).website
   end
@@ -94,7 +95,7 @@ class BTCScraper
         court_info = courts[col]
 
         vacancies << Vacancy.new(
-          venue: :btc,
+          venue: @venue,
           date:,
           start_time:,
           end_time:,

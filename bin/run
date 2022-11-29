@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/scraper'
+require_relative '../lib/runner'
 
-scraper = Scraper.new
-scraper.run
-puts scraper.show_vacancies
+data = Runner.new(
+  btc: BTCScraper.new
+).run
+puts data
