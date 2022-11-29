@@ -5,16 +5,15 @@ require 'dotenv/load'
 require_relative './vacancy'
 require_relative './vacancies'
 
-BTC_LOGIN = 'https://www.burnabytennis.ca/burnaby/home/login.do'
-
-class Scraper
-  def initialize
+class BTCScraper
+  def initialize(website)
     @vacancies = Vacancies.new
+    @website = website
   end
 
   def run(to_a: false)
     agent = Mechanize.new
-    login_page = agent.get(BTC_LOGIN)
+    login_page = agent.get(@website)
 
     form = login_page.form
     form.userId = ENV['ACCOUNT']
