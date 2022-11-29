@@ -3,7 +3,7 @@ require_relative '../lib/btc_scraper'
 
 class TestMeme < Minitest::Test
   def setup
-    @scraper = BTCScraper.new('https://www.burnabytennis.ca/burnaby/home/login.do')
+    @scraper = BTCScraper.new
   end
 
   def test_run

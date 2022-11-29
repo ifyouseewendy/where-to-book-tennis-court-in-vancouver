@@ -1,7 +1,8 @@
-{
-  "btc": {
+[
+  {
+    "id": "btc",
     "city": "Burnaby",
     "name": "Burnaby Tennis Club",
-    "website": "'https://www.burnabytennis.ca/burnaby/home/login.do'"
+    "website": "https://www.burnabytennis.ca/burnaby/home/login.do"
   }
-}
+]

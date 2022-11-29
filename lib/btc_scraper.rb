@@ -1,14 +1,12 @@
-require 'rubygems'
-require 'bundler/setup'
 require 'mechanize'
-require 'dotenv/load'
+require_relative './venues'
 require_relative './vacancy'
 require_relative './vacancies'
 
 class BTCScraper
-  def initialize(website)
+  def initialize
     @vacancies = Vacancies.new
-    @website = website
+    @website = VENUES.at(:btc).website
   end
 
   def run(to_a: false)
