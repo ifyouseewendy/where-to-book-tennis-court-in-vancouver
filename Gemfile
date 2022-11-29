@@ -3,8 +3,13 @@
 source 'https://rubygems.org'
 
 gem 'mechanize'
+gem 'rake'
 
 group :test, :development do
   gem 'dotenv'
   gem 'pry-byebug'
+end
+
+group :test do
+  gem 'minitest'
 end
