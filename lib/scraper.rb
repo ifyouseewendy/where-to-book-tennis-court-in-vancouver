@@ -40,8 +40,12 @@ class Scraper
     end
   end
 
-  def vacancies
-    @vacancies.to_a
+  def data(to_a: false)
+    if to_a
+      @vacancies.to_a
+    else
+      @vacancies.to_h
+    end
   end
 
   private

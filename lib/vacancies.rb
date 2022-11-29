@@ -24,21 +24,8 @@ class Vacancies
     @vacancies
   end
 
-  # {
-  #   "2022-11-28": [
-  #     "08:00 - 09:00 AM Court 1, Court 2",
-  #     "08:00 - 10:00 AM Court 1",
-  #     "09:00 - 10:00 AM Court 2",
-  #     "01:00 - 02:00 PM Court 6",
-  #   ],
-  #   "2022-11-29": [
-  #     "08:00 - 09:00 AM Court 1, Court 2",
-  #     "08:00 - 10:00 AM Court 1",
-  #     "09:00 - 10:00 AM Court 2",
-  #     "01:00 - 02:00 PM Court 6",
-  #   ]
-  # }
   def to_h
-    raise NotImplementedError
+    sort!
+    @vacancies.map(&:to_h)
   end
 end

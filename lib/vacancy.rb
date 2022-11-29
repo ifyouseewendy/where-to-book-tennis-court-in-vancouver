@@ -19,4 +19,14 @@ class Vacancy
       court_info
     ].join(' ')
   end
+
+  def to_h
+    {
+      date: @date.to_s,
+      start_time: @start_time.strftime('%I:%M %p'),
+      end_time: @end_time.strftime('%I:%M %p'),
+      duration: "#{@duration}h",
+      court_info: @court_info
+    }
+  end
 end

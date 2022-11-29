@@ -8,7 +8,7 @@ class TestMeme < Minitest::Test
   def test_run
     VCR.use_cassette('login_and_book_courts') do
       @scraper.run
-      vacancies = @scraper.vacancies
+      vacancies = @scraper.data(to_a: true)
       assert_equal 12, vacancies.count
 
       vacancy = vacancies.first
