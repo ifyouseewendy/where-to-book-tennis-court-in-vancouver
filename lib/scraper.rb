@@ -8,8 +8,6 @@ require_relative './vacancies'
 BTC_LOGIN = 'https://www.burnabytennis.ca/burnaby/home/login.do'
 
 class Scraper
-  attr_reader :vacancies
-
   def initialize
     @vacancies = Vacancies.new
   end
@@ -29,6 +27,7 @@ class Scraper
     cal_page = home_page.link_with(href: /calendarDayView.do/).click
     @vacancies.concat(collect_vacancies(date, cal_page))
 
+    # following days
     cal_page.links_with(href: /calendarDayView.do/).each do |link|
       # href: iYear=2022&iMonth=10&iDate=29
       matched = link.href.match(/iYear=(?<year>\d{4})&iMonth=(?<month>\d+)&iDate=(?<day>\d+)/)
@@ -41,9 +40,8 @@ class Scraper
     end
   end
 
-  def show_vacancies
-    @vacancies.sort!
-    @vacancies.to_s
+  def vacancies
+    @vacancies.to_a
   end
 
   private

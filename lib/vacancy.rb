@@ -10,7 +10,7 @@ class Vacancy
     @court_info = court_info
   end
 
-  # "Tue Nov 29, 2022 08:00 - 09:00 AM"
+  # "Tue Nov 29, 2022 08:00 - 09:00 AM Court 1"
   def to_s
     [
       start_time.strftime('%a %b %d, %Y %I:%M'),
