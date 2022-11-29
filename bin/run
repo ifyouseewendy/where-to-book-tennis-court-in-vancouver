@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'rubygems'
-require 'bundler'
-require_relative "../lib/scraper"
+require_relative '../lib/scraper'
 
-Scraper.run
+scraper = Scraper.new
+scraper.run
+puts scraper.show_vacancies
