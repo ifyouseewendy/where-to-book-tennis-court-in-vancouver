@@ -19,7 +19,7 @@ class Runner
   def run
     vacancies = []
     @registry.each do |_venue, scraper|
-      vacancies << scraper.run
+      vacancies += scraper.run
     end
     vacancies
   end
