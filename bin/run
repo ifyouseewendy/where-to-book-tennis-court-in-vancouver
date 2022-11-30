@@ -1,13 +1,21 @@
 #!/usr/bin/env ruby
 
-require_relative '../lib/runner'
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib/'))
 require 'json'
+require 'pry-byebug'
+require 'runner'
+require 'venues'
 
 puts '--> start runner'
-data = Runner.new(
+vacancies = Runner.new(
   btc: BTCScraper.new
 ).run
 
 puts '--> write to runner-data.json'
+data = {
+  vacancies:,
+  venues: VENUES.all,
+  updated_at: Time.now.to_s
+}
 File.write('runner-data.json', JSON.dump(data))
 puts '--> done'

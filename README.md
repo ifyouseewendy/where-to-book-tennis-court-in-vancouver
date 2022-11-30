@@ -7,6 +7,10 @@ This project is to answer the universal question in one place.
 To rephrase it, let's build a webpage to display the court vacancies.
 
 
+## Note
+
+Background job runs at `bin/run` for every X minutes. It dumps the data into `runner-data.json`, which then gets rendered by `index.html`.
+
 ## TODO
 
 - [ ] Parse booking page from [BTC](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)

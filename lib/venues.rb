@@ -9,7 +9,7 @@ module VENUES
 
   def self.all
     @venues ||= JSON.parse(File.read(RAW)).each_with_object({}) do |venue, h|
-      h[venue['id']] = OpenStruct.new(venue)
+      h[venue['id']] = venue
     end
   end
 end

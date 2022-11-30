@@ -7,7 +7,7 @@ class BTCScraper
   def initialize
     @venue = :btc
     @vacancies = Vacancies.new
-    @website = VENUES.at(:btc).website
+    @website = VENUES.at(:btc)['website']
   end
 
   def run(to_a: false)
