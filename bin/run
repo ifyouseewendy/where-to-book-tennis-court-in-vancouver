@@ -17,5 +17,11 @@ data = {
   venues: VENUES.all,
   updated_at: Time.now.to_s
 }
-File.write('runner-data.json', JSON.dump(data))
+json = JSON.dump(data)
+File.write('runner-data.json', json)
+
+# This is a hack writing data into .js instead of .json to avoid CORS check in browser
+puts '--> write to runner-data.js'
+File.write('runner-data.js', "const runnerData = #{json};")
+
 puts '--> done'
