@@ -12,7 +12,8 @@ require 'venues'
 
 puts "[#{Time.now}] start runner"
 vacancies = Runner.new(
-  btc: BTCScraper.new
+  btc: BTCScraper.new,
+  coq: COQScraper.new
 ).run
 
 puts "[#{Time.now}] write to runner-data.json"
