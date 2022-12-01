@@ -17,10 +17,17 @@ class Runner
   end
 
   def run
-    vacancies = []
-    @registry.each do |_venue, scraper|
-      vacancies += scraper.run
+    vacancies_by_venue = {}
+    @registry.each do |venue, scraper|
+      vacancies = scraper.run
+
+      group_by_date = Hash.new { |h, k| h[k] = [] }
+      vacancies.each do |vacancy|
+        group_by_date[vacancy[:date]] << vacancy
+      end
+
+      vacancies_by_venue[venue] = group_by_date
     end
-    vacancies
+    vacancies_by_venue
   end
 end
