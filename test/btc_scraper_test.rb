@@ -9,10 +9,10 @@ class BTCScraperTest < Minitest::Test
   def test_run
     VCR.use_cassette('btc_login_and_book_courts') do
       vacancies = @scraper.run(to_a: true)
-      assert_equal 19, vacancies.count
+      assert_equal 6, vacancies.count
 
       vacancy = vacancies.first
-      assert_equal 'btc: Wed Nov 30, 2022 07:00 PM - 07:30 PM (0.5h) Indoor Court 1', vacancy.to_s
+      assert_equal 'btc: Thu Dec 01, 2022 09:00 AM - 10:00 AM (1.0h) Indoor Court 3', vacancy.to_s
     end
   end
 end
