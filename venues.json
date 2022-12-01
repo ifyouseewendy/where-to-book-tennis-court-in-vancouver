@@ -4,12 +4,14 @@
     "city": "Burnaby",
     "name": "Burnaby Tennis Club",
     "login": "https://www.burnabytennis.ca/burnaby/home/login.do",
-    "link": "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11"
+    "link": "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11",
+    "visibleDays": 3
   },
   {
     "id": "coq",
     "city": "Coquitlam",
     "name": "The Tennis Center",
-    "link": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26"
+    "link": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
+    "visibleDays": 8
   }
 ]

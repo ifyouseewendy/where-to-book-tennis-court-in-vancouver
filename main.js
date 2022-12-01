@@ -10,6 +10,7 @@ $(document).ready(function () {
     var venueData = runnerData.venues[venue];
     var venueTitle = `${venueData.city} - ${venueData.name}`;
     var venueLink = venueData.link;
+    var venueDaysVisible = venueData.visibleDays;
 
     var dateVacancies = runnerData.vacancies[venue];
     var rows = [];
@@ -53,7 +54,7 @@ $(document).ready(function () {
               </button>
             </li>
             <li class="list-inline-item"><a href="${venueLink}" target="_blank">(Link)</a></li>
-            <li class="list-inline-item">(3 days visible)</li>
+            <li class="list-inline-item">(${venueDaysVisible} days visible)</li>
           </ul>
         </div>
 
