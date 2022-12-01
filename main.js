@@ -32,7 +32,7 @@ $(document).ready(function () {
 
     var table = `
       <div class="table-responsive">
-        <table class="table table-hover">
+        <table class="table table-striped table-bordered">
           <tbody>
             ${rows.join("\n")}
           </tbody>
@@ -46,7 +46,7 @@ $(document).ready(function () {
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
               <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-${venueTitle} <a href="${venueLink}">(Link)</a>
+      <p class="h3">${venueTitle} <a href="${venueLink}">(Link)</a></p>
               </button>
             </h5>
           </div>
