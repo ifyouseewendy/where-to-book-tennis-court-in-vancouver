@@ -1,8 +1,12 @@
 #!/usr/bin/env ruby
-
-$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib/'))
+#
+require 'rubygems'
+require 'bundler/setup'
+require 'dotenv/load'
 require 'json'
 require 'pry-byebug'
+
+$LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib/'))
 require 'runner'
 require 'venues'
 

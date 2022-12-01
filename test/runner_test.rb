@@ -1,5 +1,4 @@
 require_relative './test_helper'
-require_relative '../lib/runner'
 
 class RunnerTest < Minitest::Test
   def setup

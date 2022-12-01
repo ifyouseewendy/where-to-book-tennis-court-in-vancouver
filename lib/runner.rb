@@ -1,7 +1,3 @@
-require 'rubygems'
-require 'bundler/setup'
-require 'dotenv/load'
-require_relative './venues'
 require_relative './btc_scraper'
 
 class Runner

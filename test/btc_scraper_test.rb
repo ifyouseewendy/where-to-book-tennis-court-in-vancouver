@@ -1,5 +1,5 @@
 require_relative './test_helper'
-require_relative '../lib/btc_scraper'
+require 'btc_scraper'
 
 class BTCScraperTest < Minitest::Test
   def setup
