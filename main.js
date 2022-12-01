@@ -46,11 +46,15 @@ $(document).ready(function () {
     card.push(`
       <div class="card">
         <div class="card-header" id="heading${venue}">
-          <h5 class="mb-0">
-            <button class="btn" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
-    <p class="h4">${venueTitle} <a href="${venueLink}">(Link)</a></p>
-            </button>
-          </h5>
+          <ul class="list-inline">
+            <li class="list-inline-item">
+              <button class="btn" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
+                <h4>${venueTitle}</h4>
+              </button>
+            </li>
+            <li class="list-inline-item"><a href="${venueLink}" target="_blank">(Link)</a></li>
+            <li class="list-inline-item">(3 days visible)</li>
+          </ul>
         </div>
 
         <div id="collapse${venue}" class="collapse show" aria-labelledby="heading${venue}" data-parent="#accordion">
