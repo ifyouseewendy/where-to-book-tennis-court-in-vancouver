@@ -1,0 +1,13 @@
+require 'rubygems'
+require 'bundler/setup'
+require 'dotenv/load'
+require 'json'
+require 'pry-byebug'
+require 'mechanize'
+
+require 'runner'
+require 'venues'
+require 'vacancy'
+require 'vacancies'
+require 'btc_scraper'
+require 'coq_scraper'

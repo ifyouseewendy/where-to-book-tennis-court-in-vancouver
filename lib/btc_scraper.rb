@@ -1,8 +1,3 @@
-require 'mechanize'
-require_relative './venues'
-require_relative './vacancy'
-require_relative './vacancies'
-
 class BTCScraper
   COOKIES = 'cookies/btc.yml'
 
@@ -112,7 +107,7 @@ class BTCScraper
       page = agent.get(@link)
 
       unless page.uri.to_s.end_with?('error.do')
-        puts "##{@venue} Use cookies"
+        puts "##{@venue} Reuse cookies"
         return page
       end
     end

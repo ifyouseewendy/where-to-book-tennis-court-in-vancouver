@@ -1,6 +1,3 @@
-require_relative './btc_scraper'
-require_relative './coq_scraper'
-
 class Runner
   # registry contains a mapping between venue and scaper
   # eg.

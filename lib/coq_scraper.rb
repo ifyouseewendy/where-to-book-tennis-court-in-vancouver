@@ -1,8 +1,3 @@
-require 'mechanize'
-require_relative './venues'
-require_relative './vacancy'
-require_relative './vacancies'
-
 class COQScraper
   COOKIES = 'cookies/coq.yml'
 

@@ -1,5 +1,4 @@
 require_relative './test_helper'
-require 'coq_scraper'
 
 class COQScraperTest < Minitest::Test
   def setup
