@@ -1,7 +1,9 @@
 $(document).ready(function () {
   console.log(runnerData);
 
-  $("#last-updated-at").text("Last updated at: " + runnerData.updated_at);
+  $("#last-updated-at").text(
+    `Last updated at: ${runnerData.updated_at} (update per 5 min)`,
+  );
 
   for (let venue in runnerData.vacancies) {
     var venueData = runnerData.venues[venue];
@@ -46,7 +48,7 @@ $(document).ready(function () {
           <div class="card-header" id="headingOne">
             <h5 class="mb-0">
               <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      <p class="h3">${venueTitle} <a href="${venueLink}">(Link)</a></p>
+      <p class="h4">${venueTitle} <a href="${venueLink}">(Link)</a></p>
               </button>
             </h5>
           </div>

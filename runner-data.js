@@ -71,5 +71,5 @@ const runnerData = {
       website: "https://www.burnabytennis.ca/burnaby/home/login.do",
     },
   },
-  updated_at: "2022-11-30 22:07:03 -0800",
+  updated_at: "Wed Nov 30, 2022 10:12 PM",
 };
