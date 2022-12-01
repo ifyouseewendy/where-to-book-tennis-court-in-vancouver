@@ -5,6 +5,7 @@ $(document).ready(function () {
     `Last updated at: ${runnerData.updated_at} (update per 5 min)`,
   );
 
+  var card = [`<div id="accordion">`];
   for (let venue in runnerData.vacancies) {
     var venueData = runnerData.venues[venue];
     var venueTitle = `${venueData.city} - ${venueData.name}`;
@@ -42,26 +43,24 @@ $(document).ready(function () {
       </div>
     `;
 
-    var card = `
-      <div id="accordion">
-        <div class="card">
-          <div class="card-header" id="headingOne">
-            <h5 class="mb-0">
-              <button class="btn" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-      <p class="h4">${venueTitle} <a href="${venueLink}">(Link)</a></p>
-              </button>
-            </h5>
-          </div>
+    card.push(`
+      <div class="card">
+        <div class="card-header" id="heading${venue}">
+          <h5 class="mb-0">
+            <button class="btn" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
+    <p class="h4">${venueTitle} <a href="${venueLink}">(Link)</a></p>
+            </button>
+          </h5>
+        </div>
 
-          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
-            <div class="card-body">
-            ${table}
-            </div>
+        <div id="collapse${venue}" class="collapse show" aria-labelledby="heading${venue}" data-parent="#accordion">
+          <div class="card-body">
+          ${table}
           </div>
         </div>
       </div>
-    `;
-
-    $("#vacancies-list").html(card);
+    `);
   }
+  card.push("</div>");
+  $("#vacancies-list").html(card.join("\n"));
 });
