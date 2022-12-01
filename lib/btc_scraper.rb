@@ -9,7 +9,8 @@ class BTCScraper
   def initialize
     @venue = :btc
     @vacancies = Vacancies.new
-    @website = VENUES.at(:btc)['website']
+    @login = VENUES.at(:btc)['login']
+    @link = VENUES.at(:btc)['link']
   end
 
   def run(to_a: false)
@@ -110,7 +111,7 @@ class BTCScraper
       agent.cookie_jar.load(COOKIES, session: true)
       puts "[#{Time.now}] [#{self.class}] Load cookies from #{COOKIES} successfully"
 
-      page = agent.get('https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11')
+      page = agent.get(@link)
 
       unless page.uri.to_s.end_with?('error.do')
         puts "[#{Time.now}] [#{self.class}] Use cookies"
@@ -124,7 +125,7 @@ class BTCScraper
 
   def fresh_login(agent)
     puts "[#{Time.now}] [#{self.class}] Fresh login"
-    login_page = agent.get(@website)
+    login_page = agent.get(@login)
 
     form = login_page.form
     form.userId = ENV['ACCOUNT']

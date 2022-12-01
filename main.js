@@ -9,7 +9,7 @@ $(document).ready(function () {
   for (let venue in runnerData.vacancies) {
     var venueData = runnerData.venues[venue];
     var venueTitle = `${venueData.city} - ${venueData.name}`;
-    var venueLink = venueData.website;
+    var venueLink = venueData.link;
 
     var dateVacancies = runnerData.vacancies[venue];
     var rows = [];

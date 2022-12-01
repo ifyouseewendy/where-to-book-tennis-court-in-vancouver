@@ -3,6 +3,7 @@
     "id": "btc",
     "city": "Burnaby",
     "name": "Burnaby Tennis Club",
-    "website": "https://www.burnabytennis.ca/burnaby/home/login.do"
+    "login": "https://www.burnabytennis.ca/burnaby/home/login.do",
+    "link": "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11"
   }
 ]
