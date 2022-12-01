@@ -21,4 +21,5 @@ Data is massaged mostly in server side and gets rendered directly in frontend.
 - [ ] Build a HTML page to load data and render (mobile friendly)
 - [ ] Deploy somewhere and get HTML exposed
 - [ ] Add a background job to update data every five minutes
+- [ ] Erro handling
 

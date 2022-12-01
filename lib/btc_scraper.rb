@@ -4,6 +4,8 @@ require_relative './vacancy'
 require_relative './vacancies'
 
 class BTCScraper
+  COOKIES = 'cookies/btc.yml'
+
   def initialize
     @venue = :btc
     @vacancies = Vacancies.new
@@ -11,18 +13,10 @@ class BTCScraper
   end
 
   def run(to_a: false)
-    agent = Mechanize.new
-    login_page = agent.get(@website)
-
-    form = login_page.form
-    form.userId = ENV['ACCOUNT']
-    form.password = ENV['PASSWORD']
-
-    home_page = agent.submit(form, form.buttons.first)
+    cal_page = request_calendar_page
 
     # today
     date = Time.now.to_date
-    cal_page = home_page.link_with(href: /calendarDayView.do/).click
     @vacancies.concat(collect_vacancies(date, cal_page))
 
     # following days
@@ -107,5 +101,40 @@ class BTCScraper
     end
 
     vacancies
+  end
+
+  def request_calendar_page
+    agent = Mechanize.new
+
+    if File.exist?(COOKIES)
+      agent.cookie_jar.load(COOKIES, session: true)
+      puts "[#{Time.now}] [#{self.class}] Load cookies from #{COOKIES} successfully"
+
+      page = agent.get('https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11')
+
+      unless page.uri.to_s.end_with?('error.do')
+        puts "[#{Time.now}] [#{self.class}] Use cookies"
+        return page
+      end
+    end
+
+    home_page = fresh_login(agent)
+    home_page.link_with(href: /calendarDayView.do/).click
+  end
+
+  def fresh_login(agent)
+    puts "[#{Time.now}] [#{self.class}] Fresh login"
+    login_page = agent.get(@website)
+
+    form = login_page.form
+    form.userId = ENV['ACCOUNT']
+    form.password = ENV['PASSWORD']
+
+    home_page = agent.submit(form, form.buttons.first)
+
+    agent.cookie_jar.save(COOKIES, session: true)
+    puts "[#{Time.now}] [#{self.class}] Store cookies"
+
+    home_page
   end
 end
