@@ -7,6 +7,10 @@ class Vacancies
     @vacancies += vacancies
   end
 
+  def count
+    @vacancies.count
+  end
+
   def to_a
     @vacancies.sort
   end

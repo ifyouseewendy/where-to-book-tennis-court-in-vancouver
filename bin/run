@@ -10,12 +10,12 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib/'))
 require 'runner'
 require 'venues'
 
-puts '--> start runner'
+puts "[#{Time.now}] start runner"
 vacancies = Runner.new(
   btc: BTCScraper.new
 ).run
 
-puts '--> write to runner-data.json'
+puts "[#{Time.now}] write to runner-data.json"
 data = {
   vacancies:,
   venues: VENUES.all,
@@ -25,7 +25,7 @@ json = JSON.dump(data)
 File.write('runner-data.json', json)
 
 # This is a hack writing data into .js instead of .json to avoid CORS check in browser
-puts '--> write to runner-data.js'
+puts "[#{Time.now}] write to runner-data.js"
 File.write('runner-data.js', "const runnerData = #{json};")
 
-puts '--> done'
+puts "[#{Time.now}] done"

@@ -1,4 +1,5 @@
 require_relative './btc_scraper'
+require_relative './coq_scraper'
 
 class Runner
   # registry contains a mapping between venue and scaper
@@ -15,7 +16,7 @@ class Runner
   def run
     vacancies_by_venue = {}
     @registry.each do |venue, scraper|
-      vacancies = scraper.run
+      vacancies = scraper.run.to_h
 
       group_by_date = Hash.new { |h, k| h[k] = [] }
       vacancies.each do |vacancy|
