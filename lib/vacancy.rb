@@ -1,4 +1,6 @@
 class Vacancy
+  include Comparable
+
   # duration is in hours
   attr_reader :venue, :date, :start_time, :end_time, :duration, :court_info
 
@@ -33,5 +35,17 @@ class Vacancy
       duration: "#{duration}h",
       court_info:
     }
+  end
+
+  def <=>(other)
+    if date == other.date && start_time == other.start_time && end_time == other.end_time
+      court_info <=> other.court_info
+    elsif date == other.date && start_time == other.start_time
+      end_time <=> other.end_time
+    elsif date == other.date
+      start_time <=> other.start_time
+    else
+      date <=> other.date
+    end
   end
 end

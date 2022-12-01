@@ -12,7 +12,7 @@ class BTCScraperTest < Minitest::Test
       assert_equal 19, vacancies.count
 
       vacancy = vacancies.first
-      assert_equal 'btc: Tue Nov 29, 2022 07:00 PM - 07:30 PM (0.5h) Indoor Court 1', vacancy.to_s
+      assert_equal 'btc: Wed Nov 30, 2022 07:00 PM - 07:30 PM (0.5h) Indoor Court 1', vacancy.to_s
     end
   end
 end
