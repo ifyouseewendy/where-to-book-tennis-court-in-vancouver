@@ -2,7 +2,7 @@ $(document).ready(function () {
   console.log(runnerData);
 
   $("#last-updated-at").text(
-    `Last updated at: ${runnerData.updated_at} (update per 5 min)`,
+    `Last updated at: ${runnerData.updated_at} (update every ~5 min)`,
   );
 
   var card = [`<div id="accordion">`];
@@ -45,10 +45,10 @@ $(document).ready(function () {
       </div>
     `;
 
-    var alertClass = errored ? "alert alert-danger" : "";
     var alertInfo = errored
       ? `
-      <li class="list-inline-item">⚠️   Fail to sync</li>
+      <li class="list-inline-item">
+      <span class="badge badge-danger">⚠️   Fail to sync</span></li>
     `
       : "";
     var collapsedTable = errored
@@ -63,16 +63,16 @@ $(document).ready(function () {
     card.push(`
       <div class="card">
         <div class="card-header" id="heading${venue}">
-          <ul class="list-inline ${alertClass}">
-            <li class="list-inline-item">
-              <button class="btn" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
-                <h4>${venueTitle}</h4>
-              </button>
-            </li>
-            <li class="list-inline-item"><a href="${venueLink}" target="_blank">(Link)</a></li>
-            <li class="list-inline-item">(${venueDaysVisible} days visible)</li>
-            ${alertInfo}
-          </ul>
+            <ul class="list-inline" style="margin-bottom: 0">
+              <li class="list-inline-item">
+                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
+                  <h5 style="margin-bottom: 0">${venueTitle}</h5>
+                </button>
+              </li>
+              <li class="list-inline-item"><a href="${venueLink}" target="_blank">(Link)</a></li>
+              <li class="list-inline-item">(${venueDaysVisible} days visible)</li>
+              ${alertInfo}
+            </ul>
         </div>
 
         ${collapsedTable}
