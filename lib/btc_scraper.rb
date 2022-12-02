@@ -60,13 +60,13 @@ class BTCScraper
       end
     end
 
-    ends_at = matrix.last.map { |h| h[:time] }.compact.sort.last
-    ends_at = Time.parse("#{date} #{ends_at}")
-    ends_at += if ends_at.min == 30
-                 30 * 60 # half an hour
-               else
-                 60 * 60 # an hour
-               end
+    day_ends_at = matrix.last.map { |h| h[:time] }.compact.sort.last
+    day_ends_at = Time.parse("#{date} #{ends_at}")
+    day_ends_at += if ends_at.min == 30
+                     30 * 60 # half an hour
+                   else
+                     60 * 60 # an hour
+                   end
 
     (0...courts.count).each do |col|
       row = 0
@@ -83,7 +83,7 @@ class BTCScraper
         j += 1 while j < matrix.length && matrix[j][col][:others] == 'Book'
 
         end_time = if j == matrix.length
-                     ends_at
+                     day_ends_at
                    else
                      Time.parse("#{date} #{matrix[j][col][:time]}")
                    end
