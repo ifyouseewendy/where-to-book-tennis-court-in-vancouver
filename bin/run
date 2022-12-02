@@ -3,23 +3,27 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib/'))
 require 'boot'
 
-puts "[#{Time.now}] start runner"
+def now
+  TZInfo::Timezone.get('Canada/Pacific').now
+end
+
+puts "[#{now}] start runner"
 vacancies = Runner.new(
   btc: BTCScraper.new,
   coq: COQScraper.new
 ).run
 
-puts "[#{Time.now}] write to runner-data.json"
+puts "[#{now}] write to runner-data.json"
 data = {
   vacancies:,
   venues: VENUES.all,
-  updated_at: TZInfo::Timezone.get('Canada/Pacific').now.strftime('%a %b %d, %Y %I:%M %p')
+  updated_at: now.strftime('%a %b %d, %Y %I:%M %p')
 }
 json = JSON.dump(data)
 File.write('runner-data.json', json)
 
 # This is a hack writing data into .js instead of .json to avoid CORS check in browser
-puts "[#{Time.now}] write to runner-data.js"
+puts "[#{now}] write to runner-data.js"
 File.write('runner-data.js', "const runnerData = #{json};")
 
-puts "[#{Time.now}] done"
+puts "[#{now}] done"
