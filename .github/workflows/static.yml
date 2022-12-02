@@ -1,10 +1,9 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Run background job and deploy to pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push:
-    branches: ["main"]
+  schedule:
+    - cron: "/1 * * * *" # every five minutes
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -21,15 +20,28 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Single deploy job since we're just deploying
-  deploy:
+  background-job-and-deploy:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
+      runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.1']
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
+      - name: Set up Ruby
+      # To automatically get bug fixes and new Ruby versions for ruby/setup-ruby,
+      # change this to (see https://github.com/ruby/setup-ruby#versioning):
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: ${{ matrix.ruby-version }}
+          bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+      - name: Run background job
+        run: bundle exec bin/run
       - name: Setup Pages
         uses: actions/configure-pages@v2
       - name: Upload artifact
