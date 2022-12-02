@@ -60,6 +60,14 @@ class BTCScraper
       end
     end
 
+    ends_at = matrix.last.map { |h| h[:time] }.compact.sort.last
+    ends_at = Time.parse("#{date} #{ends_at}")
+    ends_at += if ends_at.min == 30
+                 30 * 60 # half an hour
+               else
+                 60 * 60 # an hour
+               end
+
     (0...courts.count).each do |col|
       row = 0
       while row < matrix.length
@@ -75,7 +83,7 @@ class BTCScraper
         j += 1 while j < matrix.length && matrix[j][col][:others] == 'Book'
 
         end_time = if j == matrix.length
-                     Time.parse("#{date + 1} 00:00 AM")
+                     ends_at
                    else
                      Time.parse("#{date} #{matrix[j][col][:time]}")
                    end
@@ -100,7 +108,7 @@ class BTCScraper
   def request_calendar_page
     agent = Mechanize.new
 
-    if File.exist?(COOKIES)
+    if ENV['ENV'] != 'test' && File.exist?(COOKIES)
       agent.cookie_jar.load(COOKIES, session: true)
       puts "##{@venue} Load cookies from #{COOKIES} successfully"
 
@@ -126,7 +134,7 @@ class BTCScraper
 
     home_page = agent.submit(form, form.buttons.first)
 
-    agent.cookie_jar.save(COOKIES, session: true)
+    agent.cookie_jar.save(COOKIES, session: true) if ENV['ENV'] != 'test'
     puts "##{@venue} Store cookies"
 
     home_page
