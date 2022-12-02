@@ -121,8 +121,8 @@ class BTCScraper
     login_page = agent.get(@login)
 
     form = login_page.form
-    form.userId = ENV['ACCOUNT']
-    form.password = ENV['PASSWORD']
+    form.userId = ENV['BTC_ACCOUNT']
+    form.password = ENV['BTC_PASSWORD']
 
     home_page = agent.submit(form, form.buttons.first)
 
