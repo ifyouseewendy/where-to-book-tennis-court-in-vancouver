@@ -4,6 +4,7 @@ require 'dotenv/load'
 require 'json'
 require 'pry-byebug'
 require 'mechanize'
+require 'tzinfo'
 
 require 'runner'
 require 'venues'

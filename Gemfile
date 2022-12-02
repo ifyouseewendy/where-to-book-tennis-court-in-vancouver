@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'mechanize'
 gem 'rake'
+gem 'tzinfo'
 
 group :test, :development do
   gem 'dotenv'

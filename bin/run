@@ -13,7 +13,7 @@ puts "[#{Time.now}] write to runner-data.json"
 data = {
   vacancies:,
   venues: VENUES.all,
-  updated_at: Time.now.strftime('%a %b %d, %Y %I:%M %p')
+  updated_at: TZInfo::Timezone.get('Canada/Pacific').now.strftime('%a %b %d, %Y %I:%M %p')
 }
 json = JSON.dump(data)
 File.write('runner-data.json', json)
