@@ -41,6 +41,9 @@ jobs:
           ruby-version: ${{ matrix.ruby-version }}
           bundler-cache: true # runs 'bundle install' and caches installed gems automatically
       - name: Run background job
+        env:
+          BTC_ACCOUNT: ${{ secrets.BTC_ACCOUNT }}
+          BTC_PASSWORD: ${{ secrets.BTC_PASSWORD }}
         run: bundle exec bin/run
       - name: Setup Pages
         uses: actions/configure-pages@v2
