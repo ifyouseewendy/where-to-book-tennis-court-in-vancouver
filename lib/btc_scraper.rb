@@ -60,13 +60,12 @@ class BTCScraper
       end
     end
 
-    day_ends_at = matrix.last.map { |h| h[:time] }.compact.sort.last
-    day_ends_at = Time.parse("#{date} #{ends_at}")
-    day_ends_at += if ends_at.min == 30
-                     30 * 60 # half an hour
-                   else
-                     60 * 60 # an hour
-                   end
+    last_row_starts_at = infer_start_time_for_empty_spot(date, matrix.last)
+    day_ends_at = if last_row_starts_at.min == 30
+                    last_row_starts_at + 30 * 60 # half an hour
+                  else
+                    last_row_starts_at + 60 * 60 # an hour
+                  end
 
     (0...courts.count).each do |col|
       row = 0
@@ -84,6 +83,8 @@ class BTCScraper
 
         end_time = if j == matrix.length
                      day_ends_at
+                   elsif matrix[j][col].empty?
+                     infer_start_time_for_empty_spot(date, matrix[j])
                    else
                      Time.parse("#{date} #{matrix[j][col][:time]}")
                    end
@@ -138,5 +139,10 @@ class BTCScraper
     puts "##{@venue} Store cookies"
 
     home_page
+  end
+
+  def infer_start_time_for_empty_spot(date, row)
+    start_time = row.map { |h| h[:time] }.compact.sort.last
+    Time.parse("#{date} #{start_time}")
   end
 end
