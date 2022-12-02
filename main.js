@@ -13,6 +13,7 @@ $(document).ready(function () {
     var venueDaysVisible = venueData.visibleDays;
 
     var dateVacancies = runnerData.vacancies[venue];
+    var errored = dateVacancies.errored;
     var rows = [];
     for (let date in dateVacancies) {
       var vacancies = dateVacancies[date];
@@ -44,10 +45,25 @@ $(document).ready(function () {
       </div>
     `;
 
+    var alertClass = errored ? "alert alert-danger" : "";
+    var alertInfo = errored
+      ? `
+      <li class="list-inline-item">⚠️   Fail to sync</li>
+    `
+      : "";
+    var collapsedTable = errored
+      ? ""
+      : `
+        <div id="collapse${venue}" class="collapse show" aria-labelledby="heading${venue}" data-parent="#accordion">
+          <div class="card-body">
+          ${table}
+          </div>
+        </div>
+    `;
     card.push(`
       <div class="card">
         <div class="card-header" id="heading${venue}">
-          <ul class="list-inline">
+          <ul class="list-inline ${alertClass}">
             <li class="list-inline-item">
               <button class="btn" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
                 <h4>${venueTitle}</h4>
@@ -55,14 +71,11 @@ $(document).ready(function () {
             </li>
             <li class="list-inline-item"><a href="${venueLink}" target="_blank">(Link)</a></li>
             <li class="list-inline-item">(${venueDaysVisible} days visible)</li>
+            ${alertInfo}
           </ul>
         </div>
 
-        <div id="collapse${venue}" class="collapse show" aria-labelledby="heading${venue}" data-parent="#accordion">
-          <div class="card-body">
-          ${table}
-          </div>
-        </div>
+        ${collapsedTable}
       </div>
     `);
   }

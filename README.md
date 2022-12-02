@@ -22,11 +22,11 @@ Data is massaged mostly in server side and gets rendered directly in frontend.
 ## TODO
 
 - [x] Parse booking page from [BTC](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
-- [ ] Parse booking page from [Coq - TTC](http://coquitlam.thetenniscentre.ca/)
+- [x] Parse booking page from [Coq - TTC](http://coquitlam.thetenniscentre.ca/)
 - [ ] Parse booking page from UBC, Hub, Coquitlam tennis center
 - [x] Define a data storage format (JSON)
 - [x] Build a HTML page to load data and render (mobile friendly)
-- [ ] Deploy somewhere and get HTML exposed
-- [ ] Add a background job to update data every five minutes
+- [x] Deploy somewhere and get HTML exposed
+- [x] Add a background job to update data every five minutes
 - [ ] Erro handling
 

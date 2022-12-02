@@ -2,6 +2,7 @@ $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib/'))
 require 'boot'
 
 require 'minitest/autorun'
+require 'mocha/minitest'
 require 'webmock/minitest'
 require 'vcr'
 

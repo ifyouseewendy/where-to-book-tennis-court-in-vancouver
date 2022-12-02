@@ -13,6 +13,7 @@ end
 
 group :test do
   gem 'minitest'
+  gem 'mocha'
   gem 'vcr'
   gem 'webmock'
 end

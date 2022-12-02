@@ -12,10 +12,6 @@ class Vacancies
   end
 
   def to_a
-    @vacancies.sort
-  end
-
-  def to_h
     @vacancies.sort.map(&:to_h)
   end
 end
