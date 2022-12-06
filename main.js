@@ -2,7 +2,7 @@ $(document).ready(function () {
   console.log(runnerData);
 
   $("#last-updated-at").text(
-    `Last updated at: ${runnerData.updated_at} (update every ~5 min)`,
+    `Last updated at: ${runnerData.updated_at} (update every ~10 min)`,
   );
 
   var card = [`<div id="accordion">`];

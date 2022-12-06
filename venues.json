@@ -15,6 +15,13 @@
     "visibleDays": 8
   },
   {
+    "id": "surrey_ttc",
+    "city": "Surrey",
+    "name": "The Tennis Centre",
+    "link": "https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
+    "visibleDays": 8
+  },
+  {
     "id": "rmd_hub",
     "city": "Richmond",
     "name": "Tennis BC Hub",
