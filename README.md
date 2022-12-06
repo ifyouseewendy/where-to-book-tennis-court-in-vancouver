@@ -23,10 +23,13 @@ Data is massaged mostly in server side and gets rendered directly in frontend.
 
 - [x] Parse booking page from [BTC](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
 - [x] Parse booking page from [Coq - TTC](http://coquitlam.thetenniscentre.ca/)
+- [x] Parse booking page from [Rmd - Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
 - [ ] Parse booking page from UBC, Hub, Coquitlam tennis center
 - [x] Define a data storage format (JSON)
 - [x] Build a HTML page to load data and render (mobile friendly)
 - [x] Deploy somewhere and get HTML exposed
 - [x] Add a background job to update data every five minutes
-- [ ] Erro handling
+- [x] Erro handling
+- [ ] Have cookies enabled for TEST
+- [ ] Change name BTC to Btc
 

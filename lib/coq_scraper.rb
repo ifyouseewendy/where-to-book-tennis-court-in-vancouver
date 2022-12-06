@@ -1,6 +1,4 @@
 class COQScraper
-  COOKIES = 'cookies/coq.yml'
-
   def initialize
     @venue = :coq
     @vacancies = Vacancies.new

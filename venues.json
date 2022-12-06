@@ -13,5 +13,13 @@
     "name": "The Tennis Center",
     "link": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
     "visibleDays": 8
+  },
+  {
+    "id": "rmd_hub",
+    "city": "Richmond",
+    "name": "Tennis BC Hub",
+    "login": "https://auth.clubspark.ca/account/signin",
+    "link": "https://clubspark.ca/TBCHubRichmond/Booking/bookbydate",
+    "visibleDays": 5
   }
 ]
