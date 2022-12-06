@@ -13,6 +13,7 @@ class SurreyTTCScraper
 
       uri = URI("#{@link}&#{date.to_s.delete('-')}")
 
+      puts "##{@venue} Fetching calendar data for #{date}"
       res = Net::HTTP.get_response(uri)
       raise "Fail to request #{uri}: #{res.code}" unless res.is_a?(Net::HTTPSuccess)
 
