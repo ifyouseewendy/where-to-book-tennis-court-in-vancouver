@@ -4,12 +4,12 @@ class Vacancy
   # duration is in hours
   attr_reader :venue, :date, :start_time, :end_time, :duration, :court_info
 
-  def initialize(venue:, date:, start_time:, end_time:, court_info:)
+  def initialize(venue:, date:, start_time:, end_time:, court_info:, duration: nil)
     @venue = venue
     @date = date
     @start_time = start_time
     @end_time = end_time
-    @duration = ((end_time - start_time) / 3600.0).round(1)
+    @duration = duration || ((end_time - start_time) / 3600.0).round(1)
     @court_info = court_info
   end
 

@@ -11,7 +11,7 @@ class BTCScraperTest < Minitest::Test
     VCR.use_cassette('btc_request_calendar_page') do
       Timecop.freeze(Date.parse('2022-11-30')) do
         vacancies = @scraper.run
-        assert_equal 6, vacancies.count
+        assert_equal 5, vacancies.count
       end
     end
   end
@@ -23,7 +23,7 @@ class BTCScraperTest < Minitest::Test
     VCR.use_cassette('btc_request_calendar_page_ends_at_1100') do
       Timecop.freeze(Date.parse('2022-12-02')) do
         vacancies = @scraper.run.to_a
-        assert_equal 11, vacancies.count
+        assert_equal 7, vacancies.count
         assert_equal '11:00 PM', vacancies[1][:end_time]
       end
     end
@@ -36,7 +36,7 @@ class BTCScraperTest < Minitest::Test
     VCR.use_cassette('btc_request_calendar_page_blank_spot') do
       Timecop.freeze(Date.parse('2022-12-02')) do
         vacancies = @scraper.run.to_a
-        assert_equal 11, vacancies.count
+        assert_equal 7, vacancies.count
         assert_equal '07:00 AM', vacancies[2][:end_time]
       end
     end

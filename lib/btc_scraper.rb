@@ -28,7 +28,7 @@ class BTCScraper
       @vacancies.concat(collect_vacancies(date, cal_page))
     end
 
-    @vacancies
+    @vacancies.sort_and_combine
   end
 
   private

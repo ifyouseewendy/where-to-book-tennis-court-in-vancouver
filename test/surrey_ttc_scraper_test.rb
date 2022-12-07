@@ -9,7 +9,7 @@ class SurreyTTCScraperTest < Minitest::Test
     VCR.use_cassette('surrey_ttc_request_calendar_page') do
       Timecop.freeze(Date.parse('2022-12-06')) do
         vacancies = @scraper.run
-        assert_equal 58, vacancies.count
+        assert_equal 35, vacancies.count
       end
     end
   end

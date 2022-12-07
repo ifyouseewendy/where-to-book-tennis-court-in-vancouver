@@ -9,7 +9,7 @@ class COQScraperTest < Minitest::Test
     VCR.use_cassette('coq_request_calendar_page') do
       Timecop.freeze(Date.parse('2022-12-01')) do
         vacancies = @scraper.run
-        assert_equal 16, vacancies.count
+        assert_equal 13, vacancies.count
       end
     end
   end

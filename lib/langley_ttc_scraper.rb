@@ -112,6 +112,6 @@ class LangleyTTCScraper
       @vacancies.concat(vacancies)
     end
 
-    @vacancies
+    @vacancies.sort_and_combine
   end
 end

@@ -46,6 +46,6 @@ class RmdHubScraper
 
     @vacancies.concat(vacancies)
 
-    @vacancies
+    @vacancies.sort_and_combine
   end
 end
