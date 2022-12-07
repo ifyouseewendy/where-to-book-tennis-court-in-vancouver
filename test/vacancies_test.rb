@@ -22,13 +22,13 @@ class VacanciesTest < Minitest::Test
 
   def test_sort_and_combine
     res = @vacancies.sort_and_combine
-    expected = [{ venue: :coq, date: 'Mon Dec 05, 2022', start_time: '08:00 AM', end_time: '08:30 AM', duration: '0.5hh', court_info: 'Court 2, Court 4' },
+    expected = [{ venue: :coq, date: 'Mon Dec 05, 2022', start_time: '08:00 AM', end_time: '08:30 AM', duration: '0.5hh', court_info: 'Court 2, 4' },
                 { venue: :coq, date: 'Mon Dec 05, 2022', start_time: '08:00 AM', end_time: '09:30 AM', duration: '1.5hh',
                   court_info: 'Court 3' },
                 { venue: :coq, date: 'Thu Dec 08, 2022', start_time: '06:30 PM', end_time: '09:30 PM', duration: '3.0hh',
                   court_info: 'Court 5' },
                 { venue: :coq, date: 'Thu Dec 08, 2022', start_time: '09:30 PM', end_time: '11:00 PM', duration: '3.0hh',
-                  court_info: 'Court 1, Court 2, Court 3' }]
+                  court_info: 'Court 1, 2, 3' }]
     assert_equal expected, res
   end
 end

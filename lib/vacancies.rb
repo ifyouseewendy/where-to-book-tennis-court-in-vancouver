@@ -28,7 +28,7 @@ class Vacancies
   # into
   #
   # [
-  #   {:venue=>:coq, :date=>"Mon Dec 05, 2022", :start_time=>"08:00 AM", :end_time=>"08:30 AM", :duration=>"0.5h", :court_info=>"Court 2, Court 4"},
+  #   {:venue=>:coq, :date=>"Mon Dec 05, 2022", :start_time=>"08:00 AM", :end_time=>"08:30 AM", :duration=>"0.5h", :court_info=>"Court 2, 4"},
   #   ...
   # ]
   def combine_court_info(vacancies)
@@ -53,7 +53,7 @@ class Vacancies
           start_time: cur_vacancy.start_time,
           end_time: cur_vacancy.end_time,
           duration: cur_vacancy.duration,
-          court_info: courts.sort.join(', ')
+          court_info: combine_court_names(courts)
         )
         combined_vacancies << combined_vacancy
       end
@@ -61,6 +61,17 @@ class Vacancies
       i += 1
     end
     combined_vacancies
+  end
+
+  def combine_court_names(courts)
+    return '' if courts.empty?
+
+    court = courts[0]
+    name = court.match(/(?<name>.*)(?<number>\d+)/)[:name].strip
+
+    numbers = courts.map { |court| court.match(/(?<name>.*)(?<number>\d+)/)[:number] }.sort.join(', ')
+
+    "#{name} #{numbers}"
   end
 
   def equal_except_court(v1, v2)
