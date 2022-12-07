@@ -5,12 +5,13 @@ class LangleyTTCScraper
     @venue = :langley_ttc
     @vacancies = Vacancies.new
     @link = VENUES.at(@venue)['link']
+    @visible_days = VENUES.at(@venue)['visibleDays']
   end
 
   def run
     today = Date.today
 
-    8.times do |offset|
+    @visible_days.times do |offset|
       date = today + offset
 
       uri = URI("#{@link}&#{date.to_s.delete('-')}")
