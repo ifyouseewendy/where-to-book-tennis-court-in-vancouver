@@ -8,7 +8,7 @@ To rephrase it, let's build a webpage to display the court vacancies in Vancouve
 
 ## TODO
 
-- [x] Parse booking page from [BTC](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
+- [x] Parse booking page from [Bnb - BTC](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
 - [x] Parse booking page from [Coq - TTC](http://coquitlam.thetenniscentre.ca/)
 - [x] Parse booking page from [Surrey - TTC](https://www.thetenniscentre.ca/surrey/book-court/)
 - [x] Parse booking page from [Langley - TTC](https://www.thetenniscentre.ca/langley/book-court/)

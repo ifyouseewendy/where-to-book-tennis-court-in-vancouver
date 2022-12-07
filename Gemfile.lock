@@ -59,6 +59,7 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    timecop (0.9.6)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -86,6 +87,7 @@ DEPENDENCIES
   pry-byebug
   rake
   selenium-webdriver
+  timecop
   tzinfo
   vcr
   webmock

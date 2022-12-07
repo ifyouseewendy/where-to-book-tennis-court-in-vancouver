@@ -15,7 +15,7 @@ class Runner
     @registry.each do |venue, scraper|
       vacancies = scraper.run.to_a
     rescue StandardError => e
-      Bugsnag.notify(e)
+      Bugsnag.notify(e) unless ENV['ENV'] == 'test'
       vacancies_by_venue[venue] = { errored: true }
     else
       group_by_date = Hash.new { |h, k| h[k] = [] }
