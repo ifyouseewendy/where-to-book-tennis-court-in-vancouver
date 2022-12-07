@@ -8,7 +8,7 @@ class RmdHubScraperTest < Minitest::Test
   def test_run
     VCR.use_cassette('rmd_hub_request_calendar_page') do
       vacancies = @scraper.run
-      assert_equal 35, vacancies.count
+      assert_equal 38, vacancies.count
     end
   end
 end

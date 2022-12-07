@@ -32,8 +32,7 @@
     "id": "rmd_hub",
     "city": "Richmond",
     "name": "Tennis BC Hub",
-    "login": "https://auth.clubspark.ca/account/signin",
-    "link": "https://clubspark.ca/TBCHubRichmond/Booking/BookByDate#?role=member",
+    "link": "https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=",
     "visibleDays": 5
   }
 ]
