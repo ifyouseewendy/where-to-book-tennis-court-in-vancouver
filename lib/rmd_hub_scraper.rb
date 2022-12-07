@@ -1,84 +1,116 @@
 class RmdHubScraper
-  COOKIES = 'cookies/rmd_hub.yml'
+  COOKIES = 'cookies/rmd_hub'
 
   def initialize
     @venue = :rmd_hub
     @vacancies = Vacancies.new
     @login = VENUES.at(@venue)['login']
     @link = VENUES.at(@venue)['link']
+    @visible_days = VENUES.at(@venue)['visibleDays']
   end
 
   def run
-    cal_page = request_calendar_page
+    options = Selenium::WebDriver::Chrome::Options.new(args: [])
+    #  options = Selenium::WebDriver::Chrome::Options.new(args: ['headless'])
+    driver = Selenium::WebDriver.for(:chrome, options:)
+    # https://www.selenium.dev/documentation/webdriver/waits/#implicit-wait
+    driver.manage.timeouts.implicit_wait = 10
 
-    # today
-    # date = Time.now.to_date
-    # @vacancies.concat(collect_vacancies(date, cal_page))
-    #
-    # # following days
-    # cal_page.links_with(href: /calendarDayView.do/).each do |link|
-    #   # href: iYear=2022&iMonth=10&iDate=29
-    #   matched = link.href.match(/iYear=(?<year>\d{4})&iMonth=(?<month>\d+)&iDate=(?<day>\d+)/)
-    #   _, year, month, day = matched.to_a
-    #   month = month.to_i + 1
-    #
-    #   date = Date.parse("#{year}-#{month}-#{day} #{Time.now.zone}")
-    #   cal_page = link.click
-    #   @vacancies.concat(collect_vacancies(date, cal_page))
-    # end
+    handle_login(driver)
+
+    today = Date.today
+    @visible_days.times do |offset|
+      date = today + offset
+
+      @vacancies.concat(collect_vacancies(date, driver))
+    end
 
     @vacancies
+  ensure
+    driver.quit if driver
   end
 
   private
 
-  def request_calendar_page
-    agent = Mechanize.new
+  def collect_vacancies(date, driver)
+    puts "##{@venue} Fetching calendar page for #{date}"
 
-    if ENV['ENV'] != 'test' && File.exist?(COOKIES)
-      agent.cookie_jar.load(COOKIES, session: true)
-      puts "##{@venue} Load cookies from #{COOKIES} successfully"
+    url = "#{@link}&date=#{date}"
+    driver.get(url)
+    # File.write("#{date}.html", driver.page_source)
 
-      page = agent.get(@link)
-
-      # TODO
-      unless page.uri.to_s.end_with?('error.do')
-        puts "##{@venue} Reuse cookies"
-        return page
-      end
+    # <div class="resource-session" data-payment-type="cash" data-availability="true" data-max-slots-doubles="0" data-max-slots-singles="0" data-resource-interval="30" data-session-id="821c3382-95b6-4021-93ae-8398708c715d" data-capacity="4" data-end-time="810" data-start-time="750" data-slot-key="97c52ee6-2c32-4a7a-b42e-b69d5f111f88821c3382-95b6-4021-93ae-8398708c715d750" data-session-cost="17.5" data-cost-from="17.5" data-session-member-cost="0" data-session-guest-cost="0" style="margin-top: 0px;">
+    elements = driver.find_elements(css: 'div[data-availability="true"]')
+    elements.map do |element|
+      start_time = date.to_time + element.attribute('data-start-time').to_i
+      end_time = date.to_time + element.attribute('data-end-time').to_i
+      court_info = element.find_element(xpath: './ancestor::div[@class="resource"]').attribute('data-resource-name')
+      Vacancy.new(
+        venue: @venue,
+        date:,
+        start_time:,
+        end_time:,
+        court_info:
+      )
+    rescue StandardError => e
+      # File.write("#{date}.new.html", driver.page_source)
+      raise e
     end
-
-    page = fresh_login(agent)
-    agent.get(@link)
   end
 
-  def fresh_login(agent)
+  def handle_login(driver)
+    need_fresh_login = false
+    if ENV['ENV'] == 'test'
+      need_fresh_login = true
+    elsif File.exist?(COOKIES)
+      load_cookies(driver, COOKIES)
+      user_name = driver.find_element(css: '.user-name').text
+      if user_name == 'Nicholas'
+        puts "##{@venue} Reuse cookies"
+      else
+        need_fresh_login = true
+      end
+    else
+      need_fresh_login = true
+    end
+    fresh_login(driver) if need_fresh_login
+  end
+
+  def fresh_login(driver)
     puts "##{@venue} Fresh login"
-    login_page = agent.get(@login)
-
-    form = login_page.form
-    form.EmailAddress = ENV['RMD_HUB_ACCOUNT']
-    form.Password = ENV['RMD_HUB_PASSWORD']
-
-    page = agent.submit(form, form.buttons.first)
-
-    # new_page = agent.get(page.uri)
-    require 'pry-byebug'
-    binding.pry
-
-    form = page.form
-    headers = {
-      'origin' => 'https://auth.clubspark.ca',
-      'referer' => 'https://auth.clubspark.ca/',
-      'Content-Type' => 'application/x-www-form-urlencoded',
-      'Accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9',
-      'User-Agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/107.0.0.0 Safari/537.36'
-    }
-    new_page = agent.submit(form, form.buttons.first, headers)
-
-    agent.cookie_jar.save(COOKIES, session: true) if ENV['ENV'] != 'test'
-    puts "##{@venue} Store cookies"
-
-    new_page
+    driver.get(@login)
+    driver.find_element(css: '#EmailAddress').send_keys(ENV['RMD_HUB_ACCOUNT'])
+    driver.find_element(css: '#Password').send_keys(ENV['RMD_HUB_PASSWORD'])
+    driver.find_element(css: '#signin-btn').click
+    store_cookies(driver)
   end
+
+  def store_cookies(driver)
+    File.write(COOKIES, Marshal.dump(driver.manage.all_cookies))
+    puts "##{@venue} Store cookies"
+  end
+
+  def load_cookies(driver, cookies)
+    cookies = Marshal.load(File.read(cookies))
+    cookies.each do |cookie|
+      driver.manage.add_cookie(cookie)
+    end
+    puts "##{@venue} Load cookies from #{COOKIES} successfully"
+  end
+
+  # Simply driver.get(url) and search element by driver.find_element causes
+  # as the vacancy/slot is rendered through JS on the page.
+  #
+  #   Selenium::WebDriver::Error::StaleElementReferenceError: stale element reference: element is not attached to the page document
+  #
+  # This method sets an explicit timeout on waiting the ajax to be finished on the page
+  # def get_with_timeout(driver, url)
+  #   driver.get(url)
+  #   wait = Selenium::WebDriver::Wait.new(timeout: 10)
+  #
+  #   wait.until do
+  #     found = !!driver.find_element(css: '.ajax-wrapper')
+  #     !found
+  #   end
+  # end
 end

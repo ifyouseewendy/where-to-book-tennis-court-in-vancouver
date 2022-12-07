@@ -54,6 +54,11 @@ GEM
     rexml (3.2.5)
     ruby2_keywords (0.0.5)
     rubyntlm (0.6.3)
+    rubyzip (2.3.2)
+    selenium-webdriver (4.7.1)
+      rexml (~> 3.2, >= 3.2.5)
+      rubyzip (>= 1.2.2, < 3.0)
+      websocket (~> 1.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
     unf (0.1.4)
@@ -66,6 +71,7 @@ GEM
       hashdiff (>= 0.4.0, < 2.0.0)
     webrick (1.7.0)
     webrobots (0.1.2)
+    websocket (1.2.9)
 
 PLATFORMS
   x86_64-darwin-21
@@ -79,6 +85,7 @@ DEPENDENCIES
   mocha
   pry-byebug
   rake
+  selenium-webdriver
   tzinfo
   vcr
   webmock

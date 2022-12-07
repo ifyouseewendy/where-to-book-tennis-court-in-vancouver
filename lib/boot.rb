@@ -6,6 +6,7 @@ require 'pry-byebug'
 require 'mechanize'
 require 'tzinfo'
 require 'bugsnag'
+require 'selenium-webdriver'
 
 Bugsnag.configure do |config|
   config.api_key = ENV['BUGSNAG_API_KEY']

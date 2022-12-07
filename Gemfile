@@ -2,10 +2,11 @@
 
 source 'https://rubygems.org'
 
+gem 'bugsnag'
 gem 'mechanize'
 gem 'rake'
+gem 'selenium-webdriver'
 gem 'tzinfo'
-gem 'bugsnag'
 
 group :test, :development do
   gem 'dotenv'
