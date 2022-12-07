@@ -9,7 +9,7 @@ $(document).ready(function () {
   for (let venue in runnerData.venues) {
     var venueData = runnerData.venues[venue];
     var venueTitle = `${venueData.city} - ${venueData.name}`;
-    var venueLink = venueData.link;
+    var venueSite = venueData.site;
     var venueDaysVisible = venueData.visibleDays;
 
     var dateVacancies = runnerData.vacancies[venue];
@@ -69,7 +69,7 @@ $(document).ready(function () {
                   <h5 style="margin-bottom: 0">${venueTitle}</h5>
                 </button>
               </li>
-              <li class="list-inline-item"><a href="${venueLink}" target="_blank">(Link)</a></li>
+              <li class="list-inline-item"><a href="${venueSite}" target="_blank">(Link)</a></li>
               <li class="list-inline-item">(${venueDaysVisible} days visible)</li>
               ${alertInfo}
             </ul>

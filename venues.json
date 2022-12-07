@@ -13,6 +13,7 @@
     "city": "Richmond",
     "name": "Tennis BC Hub",
     "link": "https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=",
+    "site": "https://clubspark.ca/TBCHubRichmond/Booking/BookByDate",
     "visibleDays": 5
   },
   {
@@ -20,6 +21,7 @@
     "city": "Coquitlam",
     "name": "The Tennis Center",
     "link": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
+    "site": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
     "visibleDays": 8
   },
   {
@@ -27,6 +29,7 @@
     "city": "Surrey",
     "name": "The Tennis Centre",
     "link": "https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
+    "site": "https://www.thetenniscentre.ca/surrey/book-court/",
     "visibleDays": 8
   },
   {
@@ -34,6 +37,7 @@
     "city": "Langley",
     "name": "The Tennis Centre",
     "link": "https://www.thetenniscentre.ca/langley/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
+    "site": "https://www.thetenniscentre.ca/langley/book-court/",
     "visibleDays": 8
   }
 ]
