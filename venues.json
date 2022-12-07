@@ -5,7 +5,15 @@
     "name": "Burnaby Tennis Club",
     "login": "https://www.burnabytennis.ca/burnaby/home/login.do",
     "link": "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11",
+    "site": "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11",
     "visibleDays": 3
+  },
+  {
+    "id": "rmd_hub",
+    "city": "Richmond",
+    "name": "Tennis BC Hub",
+    "link": "https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=",
+    "visibleDays": 5
   },
   {
     "id": "coq",
@@ -27,12 +35,5 @@
     "name": "The Tennis Centre",
     "link": "https://www.thetenniscentre.ca/langley/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
     "visibleDays": 8
-  },
-  {
-    "id": "rmd_hub",
-    "city": "Richmond",
-    "name": "Tennis BC Hub",
-    "link": "https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=",
-    "visibleDays": 5
   }
 ]

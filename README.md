@@ -12,7 +12,7 @@ To rephrase it, let's build a webpage to display the court vacancies in Vancouve
 - [x] Parse booking page from [Coq - TTC](http://coquitlam.thetenniscentre.ca/)
 - [x] Parse booking page from [Surrey - TTC](https://www.thetenniscentre.ca/surrey/book-court/)
 - [x] Parse booking page from [Langley - TTC](https://www.thetenniscentre.ca/langley/book-court/)
-- [ ] Parse booking page from [Rmd - Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
+- [x] Parse booking page from [Rmd - Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
 - [ ] Parse booking page from UBC
 - [x] Define a data storage format (JSON)
 - [x] Build a HTML page to load data and render (mobile friendly)
