@@ -14,7 +14,7 @@ class LangleyTTCScraper
     @visible_days.times do |offset|
       date = today + offset
 
-      uri = URI("#{@link}&#{date.to_s.delete('-')}")
+      uri = URI("#{@link}&date=#{date.to_s.delete('-')}")
 
       puts "##{@venue} Fetching calendar data for #{date}"
       res = Net::HTTP.get_response(uri)
