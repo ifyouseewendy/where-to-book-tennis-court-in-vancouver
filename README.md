@@ -19,8 +19,7 @@ To rephrase it, let's build a webpage to display the court vacancies in Vancouve
 - [x] Deploy somewhere and get HTML exposed
 - [x] Add a background job to update data every five minutes
 - [x] Erro handling
-- [ ] Have cookies enabled for TEST
-- [ ] Change name BTC to Btc
+- [ ] Enable retry
 
 ## Implementation notes
 
@@ -47,7 +46,3 @@ Github Actions
 
 The shortest interval you can run scheduled workflows with Github Actions is once every 5 minutes.
 But there is no guarantee on the frequency. In practice, I noticed it's around 10 minutes on average.
-
-To scrape [Rmd - Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
-
-There is an issue to log in this site, given it's using the [MS-MWBF](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-mwbf/4c34a083-81ec-4a20-b4fa-4b2481cdb6f6) sign-on protocal. After filling in user credentials and submitting, it returns back a page that contains a form with the security tokens and some javascript to submit the form. However, mechanize doesn't support JS running and I couldn't properly simulate the JS run. I end up not being able to figure out how to scrape the site.
