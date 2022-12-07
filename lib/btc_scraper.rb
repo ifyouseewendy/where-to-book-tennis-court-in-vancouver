@@ -9,14 +9,15 @@ class BTCScraper
   end
 
   def run
-    cal_page = request_calendar_page
-
     # today
     date = Time.now.to_date
+    cal_page = request_calendar_page(date)
     @vacancies.concat(collect_vacancies(date, cal_page))
 
+    links = cal_page.links_with(href: /calendarDayView.do/)
+
     # following days
-    cal_page.links_with(href: /calendarDayView.do/).each do |link|
+    links.each do |link|
       # href: iYear=2022&iMonth=10&iDate=29
       matched = link.href.match(/iYear=(?<year>\d{4})&iMonth=(?<month>\d+)&iDate=(?<day>\d+)/)
       _, year, month, day = matched.to_a
@@ -106,14 +107,14 @@ class BTCScraper
     vacancies
   end
 
-  def request_calendar_page
+  def request_calendar_page(date)
     agent = Mechanize.new
 
     if ENV['ENV'] != 'test' && File.exist?(COOKIES)
       agent.cookie_jar.load(COOKIES, session: true)
       puts "##{@venue} Load cookies from #{COOKIES} successfully"
 
-      page = agent.get(@link)
+      page = agent.get("#{@link}&iYear=#{date.year}&iMonth=#{date.month - 1}&iDate=#{date.day}")
 
       unless page.uri.to_s.end_with?('error.do')
         puts "##{@venue} Reuse cookies"

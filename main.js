@@ -13,6 +13,10 @@ $(document).ready(function () {
     var venueDaysVisible = venueData.visibleDays;
 
     var dateVacancies = runnerData.vacancies[venue];
+    if (!dateVacancies) {
+      continue;
+    }
+
     var errored = dateVacancies.errored;
     var rows = [];
     for (let date in dateVacancies) {
