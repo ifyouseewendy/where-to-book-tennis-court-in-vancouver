@@ -11,6 +11,11 @@ $(document).ready(function () {
     var venueTitle = `${venueData.city} - ${venueData.name}`;
     var venueSite = venueData.site;
     var venueDaysVisible = venueData.visibleDays;
+    var venueNote = venueData.note;
+    var venueRemark = `${venueDaysVisible} days visible`;
+    if (venueNote) {
+      venueRemark += `; ${venueNote}`;
+    }
 
     var dateVacancies = runnerData.vacancies[venue];
     if (!dateVacancies) {
@@ -74,7 +79,7 @@ $(document).ready(function () {
                 </button>
               </li>
               <li class="list-inline-item"><a href="${venueSite}" target="_blank">(Link)</a></li>
-              <li class="list-inline-item">(${venueDaysVisible} days visible)</li>
+              <li class="list-inline-item"><small><i>(${venueRemark})</i></small></li>
               ${alertInfo}
             </ul>
         </div>

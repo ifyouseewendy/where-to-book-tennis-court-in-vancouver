@@ -26,7 +26,8 @@
       "court_vacancies": "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/FacilityAvailability"
     },
     "site": "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/List",
-    "visibleDays": 7
+    "visibleDays": 7,
+    "note": "Courts are only bookable 24 hrs in advance"
   },
   {
     "id": "coq",
