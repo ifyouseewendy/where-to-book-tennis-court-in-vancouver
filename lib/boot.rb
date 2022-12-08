@@ -7,6 +7,7 @@ require 'mechanize'
 require 'tzinfo'
 require 'bugsnag'
 require 'selenium-webdriver'
+require 'net/http'
 
 Bugsnag.configure do |config|
   config.api_key = ENV['BUGSNAG_API_KEY']
@@ -21,3 +22,4 @@ require 'coq_scraper'
 require 'rmd_hub_scraper'
 require 'surrey_ttc_scraper'
 require 'langley_ttc_scraper'
+require 'van_ubc_scraper'

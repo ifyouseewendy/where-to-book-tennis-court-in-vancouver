@@ -4,8 +4,8 @@ class BTCScraper
   def initialize
     @venue = :btc
     @vacancies = Vacancies.new
-    @login = VENUES.at(:btc)['login']
-    @link = VENUES.at(:btc)['link']
+    @login = VENUES.at(@venue)['login']
+    @link = VENUES.at(@venue)['link']
   end
 
   def run

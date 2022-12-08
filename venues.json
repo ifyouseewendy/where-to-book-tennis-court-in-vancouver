@@ -17,6 +17,18 @@
     "visibleDays": 5
   },
   {
+    "id": "van_ubc",
+    "city": "Vancouver",
+    "name": "UBC",
+    "endpoint": {
+      "court_lists": "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/GetFacilities",
+      "court_page": "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/Facility?facilityId={FACILITY_ID}&arrivalDate={DATE}",
+      "court_vacancies": "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/FacilityAvailability"
+    },
+    "site": "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/List",
+    "visibleDays": 7
+  },
+  {
     "id": "coq",
     "city": "Coquitlam",
     "name": "The Tennis Center",
