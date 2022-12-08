@@ -58,7 +58,7 @@ class VanUbcScraper
     end
     request.body = body.join('&')
     response = https.request(request)
-    raise "Fail to request #{uri}: #{response.code}" unless response.code == '200'
+    raise "Fail to request #{url}: #{response.code}" unless response.code == '200'
 
     data = JSON.parse(response.body)
     now = Time.now

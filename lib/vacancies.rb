@@ -92,6 +92,8 @@ class Vacancies
   # Court 01 => ["Court", 1]
   def parse_court_name(court)
     matched = court.match(/(?<name>\D+)(?<number>\d+)/)
+    return [court] if matched.nil?
+
     [matched[:name].strip, matched[:number].to_i]
   end
 end

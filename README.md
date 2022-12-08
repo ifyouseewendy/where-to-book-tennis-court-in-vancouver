@@ -6,6 +6,17 @@
 This project is to answer the universal question in one place.
 To rephrase it, let's build a webpage to display the court vacancies in Vancouver.
 
+Support venues are
+
+* [Burnaby - Burnaby Tennis Club](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
+* [Richmond - Tennis BC Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
+* [Vancouver - UBC](https://recreation.ubc.ca/tennis/court-booking/)
+* [North Vancouver - Tennis Centre](https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre)
+* [Coquitlam - The Tennis Centre](http://coquitlam.thetenniscentre.ca/)
+* [Surrey - The Tennis Centre](https://www.thetenniscentre.ca/surrey/book-court/)
+* [Langley - The Tennis Centre](https://www.thetenniscentre.ca/langley/book-court/)
+
+
 ## TODO
 
 - [x] Parse booking page from [Bnb - BTC](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
@@ -14,12 +25,12 @@ To rephrase it, let's build a webpage to display the court vacancies in Vancouve
 - [x] Parse booking page from [Langley - TTC](https://www.thetenniscentre.ca/langley/book-court/)
 - [x] Parse booking page from [Rmd - Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
 - [x] Parse booking page from [Van - UBC](https://recreation.ubc.ca/tennis/court-booking/)
-- [ ] Parse booking page from [North Van](#)
+- [x] Parse booking page from [North Van](https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre)
 - [x] Define a data storage format (JSON)
 - [x] Build a HTML page to load data and render (mobile friendly)
 - [x] Deploy somewhere and get HTML exposed
 - [x] Add a background job to update data every five minutes
-- [x] Erro handling
+- [x] Error handling
 - [ ] Enable network retry
 
 ## Implementation notes
