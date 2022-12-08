@@ -12,9 +12,9 @@ class VacanciesTest < Minitest::Test
       { venue: :coq, date: Date.parse('2022-12-08'), start_time: Time.parse('2022-12-08 09:30 PM'),
         end_time: Time.parse('2022-12-08 11:00 PM'), duration: '3.0h', court_info: 'Court 3' },
       { venue: :coq, date: Date.parse('2022-12-05'), start_time: Time.parse('2022-12-05 08:00 AM'),
-        end_time: Time.parse('2022-12-05 08:30 AM'), duration: '0.5h', court_info: 'Court 2' },
+        end_time: Time.parse('2022-12-05 08:30 AM'), duration: '0.5h', court_info: 'Court 02' },
       { venue: :coq, date: Date.parse('2022-12-05'), start_time: Time.parse('2022-12-05 08:00 AM'),
-        end_time: Time.parse('2022-12-05 08:30 AM'), duration: '0.5h', court_info: 'Court 4' },
+        end_time: Time.parse('2022-12-05 08:30 AM'), duration: '0.5h', court_info: 'Court 04' },
       { venue: :coq, date: Date.parse('2022-12-05'), start_time: Time.parse('2022-12-05 08:00 AM'),
         end_time: Time.parse('2022-12-05 09:30 AM'), duration: '1.5h', court_info: 'Court 3' }
     ].map { |h| Vacancy.new(**h) })

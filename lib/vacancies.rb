@@ -67,9 +67,9 @@ class Vacancies
     return '' if courts.empty?
 
     court = courts[0]
-    name = court.match(/(?<name>.*)(?<number>\d+)/)[:name].strip
+    name = court.match(/(?<name>\D+)(?<number>\d+)/)[:name].strip
 
-    numbers = courts.map { |court| court.match(/(?<name>.*)(?<number>\d+)/)[:number] }.sort.join(', ')
+    numbers = courts.map { |court| court.match(/(?<name>\D+)(?<number>\d+)/)[:number].to_i }.sort.join(', ')
 
     "#{name} #{numbers}"
   end
