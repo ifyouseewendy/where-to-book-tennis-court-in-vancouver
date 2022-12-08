@@ -4,7 +4,7 @@ class VacanciesTest < Minitest::Test
   def setup
     @vacancies = Vacancies.new([
       { venue: :coq, date: Date.parse('2022-12-08'), start_time: Time.parse('2022-12-08 06:30 PM'),
-        end_time: Time.parse('2022-12-08 09:30 PM'), duration: '3.0h', court_info: 'Court 5' },
+        end_time: Time.parse('2022-12-08 09:30 PM'), duration: '3.0h', court_info: 'Court 05' },
       { venue: :coq, date: Date.parse('2022-12-08'), start_time: Time.parse('2022-12-08 09:30 PM'),
         end_time: Time.parse('2022-12-08 11:00 PM'), duration: '3.0h', court_info: 'Court 1' },
       { venue: :coq, date: Date.parse('2022-12-08'), start_time: Time.parse('2022-12-08 09:30 PM'),

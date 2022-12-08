@@ -26,13 +26,24 @@ class Vacancy
     ].join(' ')
   end
 
-  def to_h
+  def as_json
     {
       venue:,
       date: date.strftime('%a %b %d, %Y'),
       start_time: start_time.strftime('%I:%M %p'),
       end_time: end_time.strftime('%I:%M %p'),
       duration: "#{duration}h",
+      court_info:
+    }
+  end
+
+  def to_h
+    {
+      venue:,
+      date:,
+      start_time:,
+      end_time:,
+      duration:,
       court_info:
     }
   end

@@ -8,11 +8,11 @@ class Vacancies
   end
 
   def sort_and_combine
-    combine_court_info(@vacancies.sort).map(&:to_h)
+    combine_court_info(@vacancies.sort).map(&:as_json)
   end
 
   def to_a
-    @vacancies.sort.map(&:to_h)
+    @vacancies.sort.map(&:as_json)
   end
 
   private
@@ -43,7 +43,14 @@ class Vacancies
       end
 
       if courts.empty?
-        combined_vacancies << vacancies[i]
+        court_info = parse_court_name(vacancies[i].court_info).join(' ')
+
+        combined_vacancies << if court_info == vacancies[i].court_info
+                                vacancies[i]
+                              else
+                                h = vacancies[i].to_h.merge(court_info:)
+                                Vacancy.new(**h)
+                              end
       else
         courts << vacancies[i].court_info if i < vacancies.length
 
@@ -67,14 +74,24 @@ class Vacancies
     return '' if courts.empty?
 
     court = courts[0]
-    name = court.match(/(?<name>\D+)(?<number>\d+)/)[:name].strip
+    name, = parse_court_name(court)
 
-    numbers = courts.map { |court| court.match(/(?<name>\D+)(?<number>\d+)/)[:number].to_i }.sort.join(', ')
+    numbers = courts.map do |court|
+      _, number = parse_court_name(court)
+      number
+    end.sort.join(', ')
 
     "#{name} #{numbers}"
   end
 
   def equal_except_court(v1, v2)
     v1.to_h.except(:court_info) == v2.to_h.except(:court_info)
+  end
+
+  # Indoor Court 1 => ["Indoor Court", 1]
+  # Court 01 => ["Court", 1]
+  def parse_court_name(court)
+    matched = court.match(/(?<name>\D+)(?<number>\d+)/)
+    [matched[:name].strip, matched[:number].to_i]
   end
 end
