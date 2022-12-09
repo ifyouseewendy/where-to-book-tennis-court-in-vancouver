@@ -59,4 +59,13 @@ class Vacancy
       date <=> other.date
     end
   end
+
+  def adjacent_by?(other)
+    date == other.date && court_info == other.court_info && end_time == other.start_time
+  end
+
+  def clone_with(attributes)
+    new_attributes = to_h.merge(attributes)
+    self.class.new(**new_attributes)
+  end
 end

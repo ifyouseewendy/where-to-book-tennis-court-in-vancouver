@@ -9,7 +9,7 @@ class NorthVanTcScraperTest < Minitest::Test
     VCR.use_cassette('north_van_tc_run') do
       Timecop.freeze('2022-12-08 12:11:10 -0800') do
         vacancies = @scraper.run
-        assert_equal 137, vacancies.count
+        assert_equal 34, vacancies.count
       end
     end
   end

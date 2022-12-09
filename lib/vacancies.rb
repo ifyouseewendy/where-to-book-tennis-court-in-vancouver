@@ -8,7 +8,10 @@ class Vacancies
   end
 
   def sort_and_combine
-    combine_court_info(@vacancies.sort).map(&:as_json)
+    vs = @vacancies
+    vs = combine_adjacent_vacancies(vs)
+    vs = combine_court_info(vs)
+    vs.map(&:as_json)
   end
 
   def to_a
@@ -16,6 +19,50 @@ class Vacancies
   end
 
   private
+
+  # combine
+  #
+  # [
+  #   {:venue=>:coq, :date=>"Mon Dec 05, 2022", :start_time=>"08:00 AM", :end_time=>"08:30 AM", :duration=>"0.5h", :court_info=>"Court 2"},
+  #   {:venue=>:coq, :date=>"Mon Dec 05, 2022", :start_time=>"08:30 AM", :end_time=>"09:00 AM", :duration=>"0.5h", :court_info=>"Court 2"}
+  #   ...
+  # ]
+  #
+  # into
+  #
+  # [
+  #   {:venue=>:coq, :date=>"Mon Dec 05, 2022", :start_time=>"08:00 AM", :end_time=>"09:00 AM", :duration=>"1.0h", :court_info=>"Court 2"},
+  #   ...
+  # ]
+  def combine_adjacent_vacancies(vacancies)
+    vacancies = group_by_court_and_sort(vacancies)
+
+    combined_vacancies = []
+    i = 0
+    while i < vacancies.length
+      cur_slot = vacancies[i]
+
+      while i + 1 < vacancies.length
+        next_slot = vacancies[i + 1]
+
+        if cur_slot.adjacent_by?(next_slot)
+          cur_slot = cur_slot.clone_with(
+            end_time: next_slot.end_time,
+            duration: cur_slot.duration + next_slot.duration
+          )
+
+          i += 1
+        else
+          break
+        end
+      end
+
+      combined_vacancies << cur_slot
+      i += 1
+    end
+
+    combined_vacancies
+  end
 
   # convert
   #
@@ -32,6 +79,8 @@ class Vacancies
   #   ...
   # ]
   def combine_court_info(vacancies)
+    vacancies = group_by_date_and_sort(vacancies)
+
     combined_vacancies = []
     i = 0
     while i < vacancies.length
@@ -95,5 +144,30 @@ class Vacancies
     return [court] if matched.nil?
 
     [matched[:name].strip, matched[:number].to_i]
+  end
+
+  def group_by_court_and_sort(vacancies)
+    group_by_court = vacancies.each_with_object(Hash.new { |h, k| h[k] = [] }) do |vacancy, h|
+      h[vacancy.court_info] << vacancy
+    end
+
+    sorted_vacancies = []
+    group_by_court.each do |_court, vacancies|
+      sorted_vacancies += vacancies.sort do |a, b|
+        if a.date == b.date && a.start_time == b.start_time
+          a.end_time <=> b.end_time
+        elsif a.date == b.date
+          a.start_time <=> b.start_time
+        else
+          a.date <=> b.date
+        end
+      end
+    end
+
+    sorted_vacancies
+  end
+
+  def group_by_date_and_sort(vacancies)
+    vacancies.sort
   end
 end

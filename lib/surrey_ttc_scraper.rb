@@ -78,27 +78,7 @@ class SurreyTTCScraper
         }
       end
 
-      # COMBINE sequential slots
-      combined_slots = []
-      i = 0
-      while i < slots.length
-        cur_slot = slots[i]
-        while i + 1 < slots.length
-          next_slot = slots[i + 1]
-
-          if cur_slot[:court] == next_slot[:court] && cur_slot[:end_time] == next_slot[:start_time]
-            cur_slot = cur_slot.merge(end_time: next_slot[:end_time])
-            i += 1
-          else
-            break
-          end
-        end
-
-        combined_slots << cur_slot
-        i += 1
-      end
-
-      vacancies = combined_slots.map do |slot|
+      vacancies = slots.map do |slot|
         Vacancy.new(
           venue: @venue,
           date:,
