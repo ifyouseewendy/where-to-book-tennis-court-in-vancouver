@@ -6,7 +6,7 @@
 This project is to answer the universal question in one place.
 To rephrase it, let's build a webpage to display the court vacancies in Vancouver.
 
-Support venues are
+Current supported venues are
 
 * [Burnaby - Burnaby Tennis Club](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
 * [Richmond - Tennis BC Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
@@ -32,6 +32,7 @@ Support venues are
 - [x] Add a background job to update data every five minutes
 - [x] Error handling
 - [ ] Enable network retry
+- [x] Collapsed views by default
 
 ## Implementation notes
 

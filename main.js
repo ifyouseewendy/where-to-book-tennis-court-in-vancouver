@@ -89,5 +89,7 @@ $(document).ready(function () {
     `);
   }
   card.push("</div>");
+
   $("#vacancies-list").html(card.join("\n"));
+  $(".collapse").collapse();
 });
