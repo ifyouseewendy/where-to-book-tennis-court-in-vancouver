@@ -52,6 +52,10 @@ Details
 * Data is sorted by `(date, start_time, end_time, court_info)`
 * [mechanize](https://github.com/sparklemotion/mechanize) is the main scraping framework used.
 
+Others
+
+* Secrets are managed by [direnv](https://github.com/direnv/direnv).
+
 ### How to add a new venue
 
 1. Add a new entry to `venues.json`
