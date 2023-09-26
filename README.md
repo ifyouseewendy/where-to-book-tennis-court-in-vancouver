@@ -33,6 +33,7 @@ Current supported venues are
 - [x] Error handling
 - [ ] Enable network retry
 - [x] Collapsed views by default
+- [ ] Build a query interface to ask for vacancies on specific dates
 
 ## Implementation notes
 

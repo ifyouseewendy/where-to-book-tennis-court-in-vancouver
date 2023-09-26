@@ -47,7 +47,8 @@
     "name": "The Tennis Center",
     "link": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
     "site": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
-    "visibleDays": 8
+    "visibleDays": 8,
+    "note": "Courts are bookable 7 days in advance"
   },
   {
     "id": "surrey_ttc",
