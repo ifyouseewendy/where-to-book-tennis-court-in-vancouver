@@ -1,8 +1,37 @@
+function renderUpdatedAt(datetimeString) {
+  // appends green circle when updatedAt is less than an hour
+  // appends yellow circle when updatedAt is less than three hours
+  // appends red circle when updatedAt is more than three hours
+
+  // Convert the input string to a Date object
+  const inputDate = new Date(datetimeString);
+
+  // Get the current time
+  const currentTime = new Date();
+
+  // Calculate the time difference in milliseconds
+  const timeDifference = inputDate.getTime() - currentTime.getTime();
+
+  // Convert the time difference to minutes
+  const timeDifferenceInMinutes = timeDifference / (1000 * 60);
+
+  // Check if the time difference is less than 60 minutes
+  if (Math.abs(timeDifferenceInMinutes) <= 60) {
+    return datetimeString + " 🟢";
+  } else if (Math.abs(timeDifferenceInMinutes) <= 180) {
+    return datetimeString + " 🟡";
+  } else {
+    return datetimeString + " 🔴";
+  }
+}
+
 $(document).ready(function () {
   console.log(runnerData);
 
+  const updatedAt = renderUpdatedAt(runnerData.updated_at);
+
   $("#last-updated-at").text(
-    `Last updated at: ${runnerData.updated_at} (update every ~10 min)`,
+    `Last updated at: ${updatedAt} (update every ~10 min)`,
   );
 
   var card = [`<div id="accordion">`];
