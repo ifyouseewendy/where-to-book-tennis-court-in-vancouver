@@ -117,8 +117,13 @@ const renderVenueVacancies = (runnerData, dateFilter) => {
     }
 
     var errored = dateVacancies.errored;
+    var venueVacancyCount = 0;
     var rows = [];
     for (let date in dateVacancies) {
+      if (dateFilter !== "All" & date != dateFilter) {
+        continue;
+      }
+
       var vacancies = dateVacancies[date];
       var hasShownDate = false;
 
@@ -134,16 +139,16 @@ const renderVenueVacancies = (runnerData, dateFilter) => {
             </tr>
           `);
           hasShownDate = true;
+          venueVacancyCount++;
         } else {
-          if (vacancy.date === dateFilter) {
-            rows.push(`
-              <tr>
-                <td scope="row">${vacancy.start_time} - ${vacancy.end_time}</td>
-                <td>(${vacancy.duration})</td>
-                <td>${vacancy.court_info}</td>
-              </tr>
-            `);
-          }
+          rows.push(`
+            <tr>
+              <td scope="row">${vacancy.start_time} - ${vacancy.end_time}</td>
+              <td>(${vacancy.duration})</td>
+              <td>${vacancy.court_info}</td>
+            </tr>
+          `);
+          venueVacancyCount++;
         }
       }
     }
@@ -176,16 +181,21 @@ const renderVenueVacancies = (runnerData, dateFilter) => {
     card.push(`
       <div class="card">
         <div class="card-header" id="heading${venue}">
-            <ul class="list-inline" style="margin-bottom: 0">
-              <li class="list-inline-item">
-                <button class="btn btn-link" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
-                  <h5 style="margin-bottom: 0">${venueTitle}</h5>
-                </button>
-              </li>
-              <li class="list-inline-item"><a href="${venueSite}" target="_blank">(Link)</a></li>
-              <li class="list-inline-item"><small><i>(${venueRemark})</i></small></li>
-              ${alertInfo}
-            </ul>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center" style="background: transparent;border: transparent;">
+              <ul class="list-inline" style="margin-bottom: 0">
+                <li class="list-inline-item">
+                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapse${venue}" aria-expanded="true" aria-controls="collapse${venue}">
+                    <h5 style="margin-bottom: 0">${venueTitle}</h5>
+                  </button>
+                </li>
+                <li class="list-inline-item"><a href="${venueSite}" target="_blank">(Link)</a></li>
+                <li class="list-inline-item"><small><i>(${venueRemark})</i></small></li>
+                ${alertInfo}
+              </ul>
+              <span class="badge badge-primary badge-pill">${venueVacancyCount > 0 ? venueVacancyCount : ""}</span>
+            </li>
+          </ul>
         </div>
 
         ${collapsedTable}
