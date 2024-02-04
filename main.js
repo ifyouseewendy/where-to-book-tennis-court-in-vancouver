@@ -34,7 +34,26 @@ $(document).ready(function () {
     `Last updated at: ${updatedAt} (update every ~10 min)`,
   );
 
-  var card = [`<div id="accordion">`];
+  const dateFilters = `
+    <p>
+      <nav class="nav nav-pills nav-justified">
+        <a class="nav-item nav-link active" href="#">All</a>
+        <a class="nav-item nav-link" href="#">2.3 Sat</a>
+        <a class="nav-item nav-link" href="#">2.4 Sun</a>
+        <a class="nav-item nav-link" href="#">2.5 Mon</a>
+        <a class="nav-item nav-link" href="#">2.6 Tue</a>
+        <a class="nav-item nav-link" href="#">2.7 Wed</a>
+        <a class="nav-item nav-link" href="#">2.8 Thu</a>
+        <a class="nav-item nav-link" href="#">2.9 Fri</a>
+        <a class="nav-item nav-link" href="#">2.10 Sat</a>
+      </nav>
+    </p>
+  `;
+  $("#date-filters").html(dateFilters);
+
+  const card = [];
+  card.push(`<div id="accordion">`);
+
   for (let venue in runnerData.venues) {
     var venueData = runnerData.venues[venue];
     var venueTitle = `${venueData.city} - ${venueData.name}`;
