@@ -25,32 +25,78 @@ function renderUpdatedAt(datetimeString) {
   }
 }
 
-$(document).ready(function () {
-  console.log(runnerData);
+// Generate dates used in filters, which contains today along with the next seven days.
+//
+// It returns two format of the same date. First is the one used in runnerData and second
+// is used to display.
+// 
+// Example output:
+//
+//   ['Sat Feb 03, 2024', 'Feb 3, Sat']
+//   ['Sun Feb 04, 2024', 'Feb 4, Sun']
+//   ['Mon Feb 05, 2024', 'Feb 5, Mon']
+//   ['Tue Feb 06, 2024', 'Feb 6, Tue']
+//   ['Thu Feb 08, 2024', 'Feb 8, Thu']
+//   ['Fri Feb 09, 2024', 'Feb 9, Fri']
+//   ['Sat Feb 10, 2024', 'Feb 10, Sat']
+//   ['Sun Feb 11, 2024', 'Feb 11, Sun']
+//
+const generateDates = () => {
+  const today = new Date();
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const dates = []
+  
+  for (let i = 0; i < 8; i++) {
+    const nextDate = new Date(today);
+    nextDate.setDate(today.getDate() + i);
+    
+    const dayOfWeek = daysOfWeek[nextDate.getDay()];
+    const month = nextDate.toLocaleString('en', { month: 'short' });
+    const day = String(nextDate.getDate()).padStart(2, '0');
+    const day2 = nextDate.getDate();
+    const year = nextDate.getFullYear();
+    
+    const filterDate = `${dayOfWeek} ${month} ${day}, ${year}`;
+    const displayDate = `${month} ${day2}, ${dayOfWeek}`;
+    dates.push([filterDate, displayDate]);
+  }
+  return dates;
+}
 
-  const updatedAt = renderUpdatedAt(runnerData.updated_at);
-
-  $("#last-updated-at").text(
-    `Last updated at: ${updatedAt} (update every ~10 min)`,
-  );
-
-  const dateFilters = `
+const renderDateFilters = (runnerData) => {
+  const dates = generateDates();
+  const dateFilters = [];
+  dateFilters.push(`
     <p>
-      <nav class="nav nav-pills nav-justified">
-        <a class="nav-item nav-link active" href="#">All</a>
-        <a class="nav-item nav-link" href="#">2.3 Sat</a>
-        <a class="nav-item nav-link" href="#">2.4 Sun</a>
-        <a class="nav-item nav-link" href="#">2.5 Mon</a>
-        <a class="nav-item nav-link" href="#">2.6 Tue</a>
-        <a class="nav-item nav-link" href="#">2.7 Wed</a>
-        <a class="nav-item nav-link" href="#">2.8 Thu</a>
-        <a class="nav-item nav-link" href="#">2.9 Fri</a>
-        <a class="nav-item nav-link" href="#">2.10 Sat</a>
+      <nav class="nav nav-pills nav-justified" id="date-filters-nav">
+        <a class="nav-item nav-link active" href="#" data-date="All">All</a>
+  `);
+  for (let i = 0; i < dates.length; i++) {
+    const [filterDate, displayDate] = dates[i];
+    dateFilters.push(`
+          <a class="nav-item nav-link" href="#" data-date="${filterDate}">${displayDate}</a>
+    `);
+  }
+  dateFilters.push(`
       </nav>
     </p>
-  `;
-  $("#date-filters").html(dateFilters);
+  `);
 
+  $("#date-filters").html(dateFilters.join("\n"));
+
+  $('#date-filters-nav a').on('click', function (e) {
+    $('#date-filters-nav a.active').removeClass("active");
+
+    e.preventDefault();
+    $(this).addClass('active');
+
+    const date = $(this).data("date");
+    console.log("select date: "+ date);
+    renderVenueVacancies(runnerData, date);
+  });
+};
+
+const renderVenueVacancies = (runnerData, dateFilter) => {
   const card = [];
   card.push(`<div id="accordion">`);
 
@@ -78,17 +124,27 @@ $(document).ready(function () {
 
       for (let i = 0; i < vacancies.length; i++) {
         var vacancy = vacancies[i];
-        rows.push(
-          `
-          <tr>
-            <td scope="row">${hasShownDate ? "" : date}</td>
-            <td>${vacancy.start_time} - ${vacancy.end_time}</td>
-            <td>(${vacancy.duration})</td>
-            <td>${vacancy.court_info}</td>
-          </tr>
-        `,
-        );
-        hasShownDate = true;
+        if (dateFilter == "All") {
+          rows.push(`
+            <tr>
+              <td scope="row">${hasShownDate ? "" : date}</td>
+              <td>${vacancy.start_time} - ${vacancy.end_time}</td>
+              <td>(${vacancy.duration})</td>
+              <td>${vacancy.court_info}</td>
+            </tr>
+          `);
+          hasShownDate = true;
+        } else {
+          if (vacancy.date === dateFilter) {
+            rows.push(`
+              <tr>
+                <td scope="row">${vacancy.start_time} - ${vacancy.end_time}</td>
+                <td>(${vacancy.duration})</td>
+                <td>${vacancy.court_info}</td>
+              </tr>
+            `);
+          }
+        }
       }
     }
 
@@ -140,4 +196,18 @@ $(document).ready(function () {
 
   $("#vacancies-list").html(card.join("\n"));
   $(".collapse").collapse();
+};
+
+$(document).ready(function () {
+  console.log(runnerData);
+
+  const updatedAt = renderUpdatedAt(runnerData.updated_at);
+
+  $("#last-updated-at").text(
+    `Last updated at: ${updatedAt} (update every ~10 min)`,
+  );
+
+  renderDateFilters(runnerData);
+
+  renderVenueVacancies(runnerData, "All");
 });
