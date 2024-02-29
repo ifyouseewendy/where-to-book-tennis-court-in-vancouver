@@ -8,6 +8,16 @@ class LangleyTTCScraper
     @visible_days = VENUES.at(@venue)['visibleDays']
   end
 
+  # remove_query_params("https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?_=1709171722234&action=tc_get_calendar&date=20240228&nonce=4dc9031605&the_cat=hard-courts", "_", "date")
+  # => https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?action=tc_get_calendar&nonce=4dc9031605&the_cat=hard-courts
+  def remove_query_params(url, *params_to_remove)
+    uri = URI.parse(url)
+    params = URI.decode_www_form(uri.query || '') # Parse existing query params
+    params.reject! { |param| params_to_remove.include?(param.first) } # Remove specified params
+    uri.query = URI.encode_www_form(params) unless params.empty? # Reconstruct query string unless empty
+    uri.to_s
+  end
+
   def fetch_link(url)
     options = Selenium::WebDriver::Chrome::Options.new
     options.add_argument('--headless')
@@ -35,7 +45,9 @@ class LangleyTTCScraper
 
       raise "No link found" if resources.count == 0
 
-      return resources[0]
+      url = resources[0]
+
+      return remove_query_params(url, "_", "date")
     rescue StandardError => e
       if e.message == "No link found" && retries < 3
         retries += 1
@@ -58,7 +70,7 @@ class LangleyTTCScraper
     @visible_days.times do |offset|
       date = today + offset
 
-      uri = URI(link.sub(/date=\d+8/, "date=#{date.to_s.delete('-')}"))
+      uri = URI(link + "&date=#{date.to_s.delete('-')}")
 
       puts "##{@venue} Fetching calendar data for #{date}"
       res = Net::HTTP.get_response(uri)

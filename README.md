@@ -8,14 +8,13 @@ To rephrase it, let's build a webpage to display the court vacancies in Vancouve
 
 Current supported venues are
 
-* [Burnaby - Burnaby Tennis Club](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
-* [Richmond - Tennis BC Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
-* [Vancouver - UBC](https://recreation.ubc.ca/tennis/court-booking/)
-* [North Vancouver - Tennis Centre](https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre)
-* [Coquitlam - The Tennis Centre](http://coquitlam.thetenniscentre.ca/)
-* [Surrey - The Tennis Centre](https://www.thetenniscentre.ca/surrey/book-court/)
-* [Langley - The Tennis Centre](https://www.thetenniscentre.ca/langley/book-court/)
-
+- [Burnaby - Burnaby Tennis Club](https://www.burnabytennis.ca/burnaby/home/readPage.do?id=141)
+- [Richmond - Tennis BC Hub](https://clubspark.ca/TBCHubRichmond/Booking/BookByDate)
+- [Vancouver - UBC](https://recreation.ubc.ca/tennis/court-booking/)
+- [North Vancouver - Tennis Centre](https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre)
+- [Coquitlam - The Tennis Centre](http://coquitlam.thetenniscentre.ca/)
+- [Surrey - The Tennis Centre](https://www.thetenniscentre.ca/surrey/book-court/)
+- [Langley - The Tennis Centre](https://www.thetenniscentre.ca/langley/book-court/)
 
 ## TODO
 
@@ -39,23 +38,23 @@ Current supported venues are
 
 High level
 
-* `bin/run` is the script to scrape venue websites and store data into `runner-data.json`. It's configured to run every 5 minutes by Github Action
-* `index.html` is the static page that loads and renders the data. It's hosted by Github Pages
-
+- `bin/run` is the script to scrape venue websites and store data into `runner-data.json`. It's configured to run every 5 minutes by Github Action
+- `index.html` is the static page that loads and renders the data. It's hosted by Github Pages
 
 Details
 
-* Scraping strategy: Prefer simple data endpoint request over login and page parsing. So, try figuring out data
+- Scraping strategy: Prefer simple data endpoint request over login and page parsing. So, try figuring out data
   endpoint firstly, otherwise use [mechanize](https://github.com/sparklemotion/mechanize) to parse page, otherwise
   employ Selenium Web driver to enable JavaScript simulation.
-* Data is actually stored in `runner-data.js` instead of `runner-data.json` to avoid CORS check, which requires JSON file to be loaded from a server.
-* Data is mostly massaged in back end and served directly to front end.
-* Data is sorted by `(date, start_time, end_time, court_info)`
-* [mechanize](https://github.com/sparklemotion/mechanize) is the main scraping framework used.
+- Data is actually stored in `runner-data.js` instead of `runner-data.json` to avoid CORS check, which requires JSON file to be loaded from a server.
+- Data is mostly massaged in back end and served directly to front end.
+- Data is sorted by `(date, start_time, end_time, court_info)`
+- [mechanize](https://github.com/sparklemotion/mechanize) is the main scraping framework used.
 
 Others
 
-* Secrets are managed by [direnv](https://github.com/direnv/direnv).
+- Secrets are managed by [direnv](https://github.com/direnv/direnv).
+- Use `record: :new_episodes` to record new VCR requests
 
 ### How to add a new venue
 
