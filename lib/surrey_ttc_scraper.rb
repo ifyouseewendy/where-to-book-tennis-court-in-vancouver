@@ -2,17 +2,61 @@ class SurreyTTCScraper
   def initialize
     @venue = :surrey_ttc
     @vacancies = Vacancies.new
-    @link = VENUES.at(@venue)['link']
+    @site = VENUES.at(@venue)['site']
     @visible_days = VENUES.at(@venue)['visibleDays']
+  end
+
+  def fetch_link(url)
+    options = Selenium::WebDriver::Chrome::Options.new
+    options.add_argument('--headless')
+    options.add_argument('--disable-gpu')
+
+    driver = Selenium::WebDriver.for :chrome, options: options
+
+    pattern = "admin-ajax.php"
+
+    driver.get(url)
+    sleep 5
+    retries = 0
+    begin
+      # Execute JavaScript to extract network requests
+      script = <<~HERE
+        var resources = [];
+        performance.getEntriesByType("resource").forEach(function(entry) {
+          if (entry.name.includes("#{pattern}")) {
+            resources.push(entry.name);
+          }
+        });
+        return resources;
+      HERE
+      resources = driver.execute_script(script)
+
+      raise "No link found" if resources.count == 0
+
+      return resources[0]
+    rescue StandardError => e
+      if e.message == "No link found" && retries < 3
+        retries += 1
+        sleep 3
+        retry
+      end
+
+      raise "Fail to fetch link for #{@venue}: #{e}"
+    ensure
+      # Quit the WebDriver session
+      driver.quit if driver
+    end
   end
 
   def run
     today = Date.today
 
+    link = fetch_link(@site)
+
     @visible_days.times do |offset|
       date = today + offset
 
-      uri = URI("#{@link}&date=#{date.to_s.delete('-')}")
+      uri = URI(link.sub(/date=\d+8/, "date=#{date.to_s.delete('-')}"))
 
       puts "##{@venue} Fetching calendar data for #{date}"
       res = Net::HTTP.get_response(uri)
