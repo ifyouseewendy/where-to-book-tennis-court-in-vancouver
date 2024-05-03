@@ -29,7 +29,7 @@ function renderUpdatedAt(datetimeString) {
 //
 // It returns two format of the same date. First is the one used in runnerData and second
 // is used to display.
-// 
+//
 // Example output:
 //
 //   ['Sat Feb 03, 2024', 'Feb 3, Sat']
@@ -43,25 +43,25 @@ function renderUpdatedAt(datetimeString) {
 //
 const generateDates = () => {
   const today = new Date();
-  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-  const dates = []
-  
+  const daysOfWeek = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const dates = [];
+
   for (let i = 0; i < 8; i++) {
     const nextDate = new Date(today);
     nextDate.setDate(today.getDate() + i);
-    
+
     const dayOfWeek = daysOfWeek[nextDate.getDay()];
-    const month = nextDate.toLocaleString('en', { month: 'short' });
-    const day = String(nextDate.getDate()).padStart(2, '0');
+    const month = nextDate.toLocaleString("en", { month: "short" });
+    const day = String(nextDate.getDate()).padStart(2, "0");
     const day2 = nextDate.getDate();
     const year = nextDate.getFullYear();
-    
+
     const filterDate = `${dayOfWeek} ${month} ${day}, ${year}`;
     const displayDate = `${month} ${day2}, ${dayOfWeek}`;
     dates.push([filterDate, displayDate]);
   }
   return dates;
-}
+};
 
 const renderDateFilters = (runnerData) => {
   const dates = generateDates();
@@ -84,14 +84,14 @@ const renderDateFilters = (runnerData) => {
 
   $("#date-filters").html(dateFilters.join("\n"));
 
-  $('#date-filters-nav a').on('click', function (e) {
-    $('#date-filters-nav a.active').removeClass("active");
+  $("#date-filters-nav a").on("click", function (e) {
+    $("#date-filters-nav a.active").removeClass("active");
 
     e.preventDefault();
-    $(this).addClass('active');
+    $(this).addClass("active");
 
     const date = $(this).data("date");
-    console.log("select date: "+ date);
+    console.log("select date: " + date);
     renderVenueVacancies(runnerData, date);
   });
 };
@@ -120,7 +120,7 @@ const renderVenueVacancies = (runnerData, dateFilter) => {
     var venueVacancyCount = 0;
     var rows = [];
     for (let date in dateVacancies) {
-      if (dateFilter !== "All" & date != dateFilter) {
+      if ((dateFilter !== "All") & (date != dateFilter)) {
         continue;
       }
 
@@ -217,7 +217,7 @@ $(document).ready(function () {
     `Last updated at: ${updatedAt} (update every ~10 min)`,
   );
 
-  renderDateFilters(runnerData);
+  // renderDateFilters(runnerData);
 
   renderVenueVacancies(runnerData, "All");
 });
