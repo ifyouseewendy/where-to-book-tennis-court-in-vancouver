@@ -1,1 +1,86 @@
-const runnerData = {"vacancies":{"surrey_ttc":{"Wed Feb 28, 2024":[{"venue":"surrey_ttc","date":"Wed Feb 28, 2024","start_time":"10:30 PM","end_time":"11:00 PM","duration":"0.5h","court_info":"Hard Court 1, 6"},{"venue":"surrey_ttc","date":"Wed Feb 28, 2024","start_time":"11:00 PM","end_time":"11:30 PM","duration":"0.5h","court_info":"Hard Court 2, 4, 5"}],"Thu Feb 29, 2024":[{"venue":"surrey_ttc","date":"Thu Feb 29, 2024","start_time":"08:00 AM","end_time":"08:30 AM","duration":"0.5h","court_info":"Hard Court 2, 3, 4, 5"},{"venue":"surrey_ttc","date":"Thu Feb 29, 2024","start_time":"03:00 PM","end_time":"03:30 PM","duration":"0.5h","court_info":"Hard Court 6"},{"venue":"surrey_ttc","date":"Thu Feb 29, 2024","start_time":"10:30 PM","end_time":"11:00 PM","duration":"0.5h","court_info":"Hard Court 2, 3, 4, 6"},{"venue":"surrey_ttc","date":"Thu Feb 29, 2024","start_time":"11:00 PM","end_time":"11:30 PM","duration":"0.5h","court_info":"Hard Court 1"}],"Fri Mar 01, 2024":[{"venue":"surrey_ttc","date":"Fri Mar 01, 2024","start_time":"06:00 AM","end_time":"07:00 AM","duration":"1.0h","court_info":"Hard Court 6"},{"venue":"surrey_ttc","date":"Fri Mar 01, 2024","start_time":"08:00 AM","end_time":"08:30 AM","duration":"0.5h","court_info":"Hard Court 1"},{"venue":"surrey_ttc","date":"Fri Mar 01, 2024","start_time":"09:00 AM","end_time":"09:30 AM","duration":"0.5h","court_info":"Hard Court 1"},{"venue":"surrey_ttc","date":"Fri Mar 01, 2024","start_time":"11:00 AM","end_time":"11:30 AM","duration":"0.5h","court_info":"Hard Court 2"},{"venue":"surrey_ttc","date":"Fri Mar 01, 2024","start_time":"01:00 PM","end_time":"01:30 PM","duration":"0.5h","court_info":"Hard Court 6"}],"Sat Mar 02, 2024":[{"venue":"surrey_ttc","date":"Sat Mar 02, 2024","start_time":"06:00 AM","end_time":"07:00 AM","duration":"1.0h","court_info":"Hard Court 3, 5"}],"Sun Mar 03, 2024":[{"venue":"surrey_ttc","date":"Sun Mar 03, 2024","start_time":"06:00 AM","end_time":"07:00 AM","duration":"1.0h","court_info":"Hard Court 2, 3, 4, 5"},{"venue":"surrey_ttc","date":"Sun Mar 03, 2024","start_time":"10:00 PM","end_time":"10:30 PM","duration":"0.5h","court_info":"Hard Court 4"},{"venue":"surrey_ttc","date":"Sun Mar 03, 2024","start_time":"10:30 PM","end_time":"11:00 PM","duration":"0.5h","court_info":"Hard Court 1, 5"}],"Mon Mar 04, 2024":[{"venue":"surrey_ttc","date":"Mon Mar 04, 2024","start_time":"10:00 PM","end_time":"10:30 PM","duration":"0.5h","court_info":"Hard Court 3, 4, 5, 6"},{"venue":"surrey_ttc","date":"Mon Mar 04, 2024","start_time":"11:00 PM","end_time":"11:30 PM","duration":"0.5h","court_info":"Hard Court 1, 3, 4, 5, 6"}],"Tue Mar 05, 2024":[{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"08:00 AM","end_time":"08:30 AM","duration":"0.5h","court_info":"Hard Court 2, 3, 4, 5, 6"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"01:00 PM","end_time":"01:30 PM","duration":"0.5h","court_info":"Hard Court 3"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"02:30 PM","end_time":"03:00 PM","duration":"0.5h","court_info":"Hard Court 2, 4, 5"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"04:30 PM","end_time":"05:00 PM","duration":"0.5h","court_info":"Hard Court 1"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"09:30 PM","end_time":"10:00 PM","duration":"0.5h","court_info":"Hard Court 6"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"10:30 PM","end_time":"11:00 PM","duration":"0.5h","court_info":"Hard Court 1, 2, 3"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"10:30 PM","end_time":"11:30 PM","duration":"1.0h","court_info":"Hard Court 6"},{"venue":"surrey_ttc","date":"Tue Mar 05, 2024","start_time":"11:00 PM","end_time":"11:30 PM","duration":"0.5h","court_info":"Hard Court 4, 5"}],"Wed Mar 06, 2024":[{"venue":"surrey_ttc","date":"Wed Mar 06, 2024","start_time":"08:00 AM","end_time":"08:30 AM","duration":"0.5h","court_info":"Hard Court 2, 3, 4, 5"},{"venue":"surrey_ttc","date":"Wed Mar 06, 2024","start_time":"02:30 PM","end_time":"03:00 PM","duration":"0.5h","court_info":"Hard Court 2"},{"venue":"surrey_ttc","date":"Wed Mar 06, 2024","start_time":"03:00 PM","end_time":"03:30 PM","duration":"0.5h","court_info":"Hard Court 1"}]}},"venues":{"btc":{"id":"btc","city":"Burnaby","name":"Burnaby Tennis Club","login":"https://www.burnabytennis.ca/burnaby/home/login.do","link":"https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11","site":"https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11","visibleDays":3},"coq":{"id":"coq","city":"Coquitlam","name":"The Tennis Center","link":"https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26","site":"https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26","visibleDays":8,"note":"Courts are bookable 7 days in advance"},"langley_ttc":{"id":"langley_ttc","city":"Langley","name":"The Tennis Centre","link":"https://www.thetenniscentre.ca/langley/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts","site":"https://www.thetenniscentre.ca/langley/book-court/","visibleDays":8},"surrey_ttc":{"id":"surrey_ttc","city":"Surrey","name":"The Tennis Centre","link":"https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts","site":"https://www.thetenniscentre.ca/surrey/book-court/","visibleDays":8},"rmd_hub":{"id":"rmd_hub","city":"Richmond","name":"Tennis BC Hub","link":"https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=","site":"https://clubspark.ca/TBCHubRichmond/Booking/BookByDate","visibleDays":5},"van_ubc":{"id":"van_ubc","city":"Vancouver","name":"UBC","endpoint":{"court_lists":"https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/GetFacilities","court_page":"https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/Facility?facilityId={FACILITY_ID}&arrivalDate={DATE}","court_vacancies":"https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/FacilityAvailability"},"site":"https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/List","visibleDays":7,"note":"Courts are only bookable 24 hrs in advance"},"north_van_tc":{"id":"north_van_tc","city":"North Vancouver","name":"Tennis Centre","endpoint":{"homepage":"https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre","court_vacancies":"https://nvrc.perfectmind.com/23734/Clients/BookMe4BookingPagesV2/CoursesV2"},"site":"https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre","visibleDays":30,"note":"Courts are only bookable 24 hrs in advance"}},"updated_at":"Wed Feb 28, 2024 05:46 PM"};
+const runnerData = {
+  vacancies: {
+    btc: {},
+    coq: {},
+    langley_ttc: {},
+    surrey_ttc: {},
+    rmd_hub: {},
+    van_ubc: {},
+    north_van_tc: {},
+  },
+  venues: {
+    btc: {
+      id: "btc",
+      city: "Burnaby",
+      name: "Burnaby Tennis Club",
+      login: "https://www.burnabytennis.ca/burnaby/home/login.do",
+      link: "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11",
+      site: "https://www.burnabytennis.ca/burnaby/home/calendarDayView.do?id=11",
+      visibleDays: 3,
+    },
+    coq: {
+      id: "coq",
+      city: "Coquitlam",
+      name: "The Tennis Center",
+      link: "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
+      site: "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
+      visibleDays: 8,
+      note: "Courts are bookable 7 days in advance",
+    },
+    langley_ttc: {
+      id: "langley_ttc",
+      city: "Langley",
+      name: "The Tennis Centre",
+      link: "https://www.thetenniscentre.ca/langley/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
+      site: "https://www.thetenniscentre.ca/langley/book-court/",
+      visibleDays: 8,
+    },
+    surrey_ttc: {
+      id: "surrey_ttc",
+      city: "Surrey",
+      name: "The Tennis Centre",
+      link: "https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
+      site: "https://www.thetenniscentre.ca/surrey/book-court/",
+      visibleDays: 8,
+    },
+    rmd_hub: {
+      id: "rmd_hub",
+      city: "Richmond",
+      name: "Tennis BC Hub",
+      link: "https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=",
+      site: "https://clubspark.ca/TBCHubRichmond/Booking/BookByDate",
+      visibleDays: 5,
+    },
+    van_ubc: {
+      id: "van_ubc",
+      city: "Vancouver",
+      name: "UBC",
+      endpoint: {
+        court_lists:
+          "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/GetFacilities",
+        court_page:
+          "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/Facility?facilityId={FACILITY_ID}&arrivalDate={DATE}",
+        court_vacancies:
+          "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/FacilityAvailability",
+      },
+      site: "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/List",
+      visibleDays: 7,
+      note: "Courts are only bookable 24 hrs in advance",
+    },
+    north_van_tc: {
+      id: "north_van_tc",
+      city: "North Vancouver",
+      name: "Tennis Centre",
+      endpoint: {
+        homepage:
+          "https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre",
+        court_vacancies:
+          "https://nvrc.perfectmind.com/23734/Clients/BookMe4BookingPagesV2/CoursesV2",
+      },
+      site: "https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre",
+      visibleDays: 30,
+      note: "Courts are only bookable 24 hrs in advance",
+    },
+  },
+  updated_at: "Wed May 1, 2024 00:00 AM",
+};
