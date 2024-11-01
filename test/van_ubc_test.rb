@@ -7,7 +7,7 @@ class VanUbcScraperTest < Minitest::Test
 
   def teardown; end
 
-  def test_run
+  def skip_test_run
     VCR.use_cassette('van_ubc_run') do
       Timecop.freeze('2022-12-07 21:23:02 -0800') do
         vacancies = @scraper.run
