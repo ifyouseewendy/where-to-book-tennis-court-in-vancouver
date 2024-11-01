@@ -7,9 +7,9 @@ class LangleyTTCScraperTest < Minitest::Test
 
   def test_run
     VCR.use_cassette('langley_ttc_request_calendar_page') do
-      Timecop.freeze(Date.parse('2024-02-28')) do
+      Timecop.freeze(Date.parse('2024-11-01')) do
         vacancies = @scraper.run
-        assert_equal 24, vacancies.count
+        assert_equal 44, vacancies.count
       end
     end
   end
