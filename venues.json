@@ -32,38 +32,5 @@
     "link": "https://www.thetenniscentre.ca/surrey/wp-admin/admin-ajax.php?action=tc_get_calendar&the_cat=hard-courts",
     "site": "https://www.thetenniscentre.ca/surrey/book-court/",
     "visibleDays": 8
-  },
-  {
-    "id": "rmd_hub",
-    "city": "Richmond",
-    "name": "Tennis BC Hub",
-    "link": "https://clubspark.ca/v0/VenueBooking/TBCHubRichmond/GetVenueSessions?resourceID=",
-    "site": "https://clubspark.ca/TBCHubRichmond/Booking/BookByDate",
-    "visibleDays": 5
-  },
-  {
-    "id": "van_ubc",
-    "city": "Vancouver",
-    "name": "UBC",
-    "endpoint": {
-      "court_lists": "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/GetFacilities",
-      "court_page": "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/Facility?facilityId={FACILITY_ID}&arrivalDate={DATE}",
-      "court_vacancies": "https://ubc.perfectmind.com/24063/Clients/BookMe4LandingPages/FacilityAvailability"
-    },
-    "site": "https://ubc.perfectmind.com/24063/Clients/BookMe4FacilityList/List",
-    "visibleDays": 7,
-    "note": "Courts are only bookable 24 hrs in advance"
-  },
-  {
-    "id": "north_van_tc",
-    "city": "North Vancouver",
-    "name": "Tennis Centre",
-    "endpoint": {
-      "homepage": "https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre",
-      "court_vacancies": "https://nvrc.perfectmind.com/23734/Clients/BookMe4BookingPagesV2/CoursesV2"
-    },
-    "site": "https://www.nvrc.ca/facilities-fields/north-vancouver-tennis-centre",
-    "visibleDays": 30,
-    "note": "Courts are only bookable 24 hrs in advance"
   }
 ]

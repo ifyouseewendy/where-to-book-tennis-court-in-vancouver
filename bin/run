@@ -10,12 +10,13 @@ end
 puts "[#{now}] start runner"
 vacancies = Runner.new(
   btc: BTCScraper.new,
-  van_ubc: VanUbcScraper.new,
-  north_van_tc: NorthVanTcScraper.new,
   coq: COQScraper.new,
-  rmd_hub: RmdHubScraper.new,
   surrey_ttc: SurreyTTCScraper.new,
-  langley_ttc: LangleyTTCScraper.new
+  langley_ttc: LangleyTTCScraper.new,
+  # STOP RUNNING
+  # rmd_hub: RmdHubScraper.new,
+  # van_ubc: VanUbcScraper.new,
+  # north_van_tc: NorthVanTcScraper.new,
 ).run
 
 puts "[#{now}] write to runner-data.json"
