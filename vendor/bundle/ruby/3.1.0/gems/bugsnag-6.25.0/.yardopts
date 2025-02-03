@@ -1,0 +1,12 @@
+--charset UTF-8
+--fail-on-warning
+--hide-api private
+--no-private
+--protected
+--title "bugsnag-ruby API Documentation"
+--embed-mixins
+lib/**/*.rb
+-
+README.md
+CONTRIBUTING.md
+CHANGELOG.md
