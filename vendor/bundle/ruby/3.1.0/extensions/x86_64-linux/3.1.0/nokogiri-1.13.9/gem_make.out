@@ -97,10 +97,10 @@ checking for whether -DNOKOGIRI_OTHER_LIBRARY_VERSIONS="\"libgumbo:1.0.0-nokogir
 creating Makefile
 
 current directory: /home/runner/work/where-to-book-tennis-court-in-vancouver/where-to-book-tennis-court-in-vancouver/vendor/bundle/ruby/3.1.0/gems/nokogiri-1.13.9/ext/nokogiri
-make DESTDIR\= sitearchdir\=./.gem.20250212-1822-dzjlk8 sitelibdir\=./.gem.20250212-1822-dzjlk8 clean
+make DESTDIR\= sitearchdir\=./.gem.20250210-1856-j3rkqj sitelibdir\=./.gem.20250210-1856-j3rkqj clean
 
 current directory: /home/runner/work/where-to-book-tennis-court-in-vancouver/where-to-book-tennis-court-in-vancouver/vendor/bundle/ruby/3.1.0/gems/nokogiri-1.13.9/ext/nokogiri
-make DESTDIR\= sitearchdir\=./.gem.20250212-1822-dzjlk8 sitelibdir\=./.gem.20250212-1822-dzjlk8
+make DESTDIR\= sitearchdir\=./.gem.20250210-1856-j3rkqj sitelibdir\=./.gem.20250210-1856-j3rkqj
 compiling gumbo.c
 gumbo.c: In function ‘noko_init_gumbo’:
 gumbo.c:569:1: warning: old-style function definition [-Wold-style-definition]
@@ -396,6 +396,6 @@ linking shared-object nokogiri/nokogiri.so
 Cleaning files only used during build.
 
 current directory: /home/runner/work/where-to-book-tennis-court-in-vancouver/where-to-book-tennis-court-in-vancouver/vendor/bundle/ruby/3.1.0/gems/nokogiri-1.13.9/ext/nokogiri
-make DESTDIR\= sitearchdir\=./.gem.20250212-1822-dzjlk8 sitelibdir\=./.gem.20250212-1822-dzjlk8 install
-/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20250212-1822-dzjlk8/nokogiri
+make DESTDIR\= sitearchdir\=./.gem.20250210-1856-j3rkqj sitelibdir\=./.gem.20250210-1856-j3rkqj install
+/usr/bin/install -c -m 0755 nokogiri.so ./.gem.20250210-1856-j3rkqj/nokogiri
 installing nokogiri libraries
