@@ -3,7 +3,7 @@ www.burnabytennis.ca:
   "/burnaby":
     JSESSIONID: !ruby/object:Mechanize::Cookie
       name: JSESSIONID
-      value: FF0E2641765D2CD53F6E89A230ED701E.ms5
+      value: C34B2835790F6F32E7B298FB91367A01.ms5
       domain: www.burnabytennis.ca
       for_domain: false
       path: "/burnaby"
@@ -11,5 +11,5 @@ www.burnabytennis.ca:
       httponly: false
       expires:
       max_age:
-      created_at: 2025-02-12 00:52:48.379017299 +00:00
-      accessed_at: 2025-02-12 00:52:49.483442561 +00:00
+      created_at: 2025-02-12 01:24:35.171967418 +00:00
+      accessed_at: 2025-02-12 01:24:36.375864570 +00:00
