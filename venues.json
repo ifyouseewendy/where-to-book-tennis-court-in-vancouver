@@ -12,8 +12,8 @@
     "id": "coq",
     "city": "Coquitlam",
     "name": "The Tennis Center",
-    "link": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
-    "site": "https://www.tennisclubsoft.com/ctc/home/calendarDayView.do?id=26",
+    "link": "https://tennisforlife.ca/court-booking/",
+    "site": "https://tennisforlife.ca/court-booking/",
     "visibleDays": 8,
     "note": "Courts are bookable 7 days in advance"
   },
