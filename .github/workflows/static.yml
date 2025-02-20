@@ -2,8 +2,9 @@
 name: Run background job and deploy to pages
 
 on:
-  schedule:
-    - cron: "*/5 * * * *" # every five minutes
+  # Stop running temporarily
+  # schedule:
+  #   - cron: "*/5 * * * *" # every five minutes
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
